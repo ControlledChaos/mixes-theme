@@ -24,16 +24,16 @@ if ( post_password_required() ) {
 	<?php if ( have_comments() ) : ?>
 		<h2 class="comments-title">
 			<?php
-			$bst_theme_comment_count = get_comments_number();
-			if ( '1' === $bst_theme_comment_count ) {
+			$mixes_theme_comment_count = get_comments_number();
+			if ( '1' === $mixes_theme_comment_count ) {
 				printf(
 					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'mixes-theme' ),
 					'<span>' . get_the_title() . '</span>'
 				);
 			} else {
 				printf(
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $bst_theme_comment_count, 'comments title', 'mixes-theme' ) ),
-					number_format_i18n( $bst_theme_comment_count ),
+					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $mixes_theme_comment_count, 'comments title', 'mixes-theme' ) ),
+					number_format_i18n( $mixes_theme_comment_count ),
 					'<span>' . get_the_title() . '</span>'
 				);
 			}

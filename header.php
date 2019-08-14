@@ -42,7 +42,7 @@ if ( is_home() && ! is_front_page() ) {
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="site" itemscope="itemscope" itemtype="<?php Monica_Mixes_Theme\Includes\bst_site_schema(); ?>">
+<div id="page" class="site" itemscope="itemscope" itemtype="<?php Mixes\Includes\mixes_site_schema(); ?>">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'mixes-theme' ); ?></a>
 
 	<header id="masthead" class="site-header" role="banner" itemscope="itemscope" itemtype="http://schema.org/Organization">
@@ -54,10 +54,10 @@ if ( is_home() && ! is_front_page() ) {
 				<?php else : ?>
 				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
 				<?php endif;
-			$bst_theme_description = get_bloginfo( 'description', 'display' );
-			if ( $bst_theme_description || is_customize_preview() ) :
+			$mixes_theme_description = get_bloginfo( 'description', 'display' );
+			if ( $mixes_theme_description || is_customize_preview() ) :
 				?>
-				<p class="site-description"><?php echo $bst_theme_description; ?></p>
+				<p class="site-description"><?php echo $mixes_theme_description; ?></p>
 			<?php endif; ?>
 		</div>
 

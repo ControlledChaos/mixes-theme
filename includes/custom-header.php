@@ -13,9 +13,9 @@
 /**
  * Header setup
  *
- * @uses bst_theme_header_style()
+ * @uses mixes_theme_header_style()
  */
-function bst_theme_custom_header_setup() {
+function mixes_theme_custom_header_setup() {
 
 	$custom_header_args = [
 		'default-image'      => '',
@@ -23,22 +23,22 @@ function bst_theme_custom_header_setup() {
 		'width'              => 1000,
 		'height'             => 250,
 		'flex-height'        => true,
-		'wp-head-callback'   => 'bst_theme_header_style',
+		'wp-head-callback'   => 'mixes_theme_header_style',
 	];
 
-	$custom_header = apply_filters( 'bst_theme_header_args', $custom_header_args );
+	$custom_header = apply_filters( 'mixes_theme_header_args', $custom_header_args );
 
 	add_theme_support( 'custom-header', $custom_header );
 
 }
-add_action( 'after_setup_theme', 'bst_theme_custom_header_setup' );
+add_action( 'after_setup_theme', 'mixes_theme_custom_header_setup' );
 
 /**
  * Styles the header image and text displayed on the blog.
  *
- * @see bst_theme_custom_header_setup().
+ * @see mixes_theme_custom_header_setup().
  */
-function bst_theme_header_style() {
+function mixes_theme_header_style() {
 
 	$header_text_color = get_header_textcolor();
 

@@ -22,14 +22,14 @@
 			?>
 			<div class="entry-meta">
 				<?php
-				Monica_Mixes_Theme\Includes\bst_theme_posted_on();
-				Monica_Mixes_Theme\Includes\bst_theme_posted_by();
+				Mixes\Includes\mixes_theme_posted_on();
+				Mixes\Includes\mixes_theme_posted_by();
 				?>
 			</div>
 		<?php endif; ?>
 	</header>
 
-	<?php Monica_Mixes_Theme\Includes\bst_theme_post_thumbnail(); ?>
+	<?php Mixes\Includes\mixes_theme_post_thumbnail(); ?>
 
 	<div class="entry-content" itemprop="articleBody">
 		<?php
@@ -53,6 +53,6 @@
 	</div>
 
 	<footer class="entry-footer">
-		<?php Monica_Mixes_Theme\Includes\bst_theme_entry_footer(); ?>
+		<?php Mixes\Includes\mixes_theme_entry_footer(); ?>
 	</footer>
 </article>

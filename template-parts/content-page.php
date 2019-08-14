@@ -14,7 +14,7 @@
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 	</header>
 
-	<?php Monica_Mixes_Theme\Includes\bst_theme_post_thumbnail(); ?>
+	<?php Mixes\Includes\mixes_theme_post_thumbnail(); ?>
 
 	<div class="entry-content" itemprop="articleBody">
 		<?php

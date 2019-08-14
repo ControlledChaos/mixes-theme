@@ -169,43 +169,43 @@ final class Functions {
 		$color_args = [
 			[
 				'name'  => __( 'Text', 'mixes-theme' ),
-				'slug'  => 'bst-text',
+				'slug'  => 'mixes-text',
 				'color' => '#333333',
 			],
 			[
 				'name'  => __( 'Light Gray', 'mixes-theme' ),
-				'slug'  => 'bst-light-gray',
+				'slug'  => 'mixes-light-gray',
 				'color' => '#888888',
 			],
 			[
 				'name'  => __( 'Pale Gray', 'mixes-theme' ),
-				'slug'  => 'bst-pale-gray',
+				'slug'  => 'mixes-pale-gray',
 				'color' => '#cccccc',
 			],
 			[
 				'name'  => __( 'White', 'mixes-theme' ),
-				'slug'  => 'bst-white',
+				'slug'  => 'mixes-white',
 				'color' => '#ffffff',
 			],
 			[
 				'name'  => __( 'Error Red', 'mixes-theme' ),
-				'slug'  => 'bst-error',
+				'slug'  => 'mixes-error',
 				'color' => '#dc3232',
 			],
 			[
 				'name'  => __( 'Warning Yellow', 'mixes-theme' ),
-				'slug'  => 'bst-warning',
+				'slug'  => 'mixes-warning',
 				'color' => '#ffb900',
 			],
 			[
 				'name'  => __( 'Success Green', 'mixes-theme' ),
-				'slug'  => 'bst-success',
+				'slug'  => 'mixes-success',
 				'color' => '#46b450',
 			]
 		];
 
 		// Apply a filter to editor arguments.
-		$colors = apply_filters( 'bst_editor_colors', $color_args );
+		$colors = apply_filters( 'mixes_editor_colors', $color_args );
 
 		// Add color support.
 		add_theme_support( 'editor-color-palette', $colors );
@@ -246,7 +246,7 @@ final class Functions {
 		/**
 		 * Custom header for the front page.
 		 */
-		add_theme_support( 'custom-header', apply_filters( 'bst_custom_header_args', [
+		add_theme_support( 'custom-header', apply_filters( 'mixes_custom_header_args', [
 			'default-image'      => get_parent_theme_file_uri( '/assets/images/header.jpg' ),
 			'width'              => 2048,
 			'height'             => 878,
@@ -278,7 +278,7 @@ final class Functions {
 		];
 
 		// Apply a filter to logo arguments.
-		$logo = apply_filters( 'bst_header_image', $logo_args );
+		$logo = apply_filters( 'mixes_header_image', $logo_args );
 
 		// Add logo support.
 		add_theme_support( 'custom-logo', $logo );
@@ -288,10 +288,10 @@ final class Functions {
 		 *
 		 * @since 1.0.0
 		 */
-		$bs_content_width = apply_filters( 'bst_content_width', 1280 );
+		$mixes_content_width = apply_filters( 'mixes_content_width', 1280 );
 
 		if ( ! isset( $content_width ) ) {
-			$content_width = $bs_content_width;
+			$content_width = $mixes_content_width;
 		}
 
 		/**
@@ -310,7 +310,7 @@ final class Functions {
 		 *
 		 * @since 1.0.0
 		 */
-		add_editor_style( '/assets/css/editor.min.css', [ 'bst-admin' ], '', 'screen' );
+		add_editor_style( '/assets/css/editor.min.css', [ 'mixes-admin' ], '', 'screen' );
 
 	}
 
@@ -347,7 +347,7 @@ final class Functions {
 		$disable = add_theme_support( 'disable-custom-colors', [] );
 
 		// Apply a filter for conditionally disabling the picker.
-		$custom_colors = apply_filters( 'bst_editor_custom_colors', '__return_false' );
+		$custom_colors = apply_filters( 'mixes_editor_custom_colors', '__return_false' );
 
 		return $custom_colors;
 
@@ -409,7 +409,7 @@ final class Functions {
 	public function frontend_styles() {
 
 		// Google fonts.
-		// wp_enqueue_style( 'bst-google-fonts', 'add-url-here', [], '', 'screen' );
+		wp_enqueue_style( 'mixes-google-fonts', 'https://fonts.googleapis.com/css?family=Montserrat:300,400,400i,500,500i,600,700,700i,800,900&display=swap', [], '', 'screen' );
 
 		/**
 		 * Theme sylesheet
@@ -421,7 +421,7 @@ final class Functions {
 		wp_enqueue_style( 'mixes-theme', get_theme_file_uri( '/assets/css/style.min.css' ), [], '' );
 
 		// Print styles.
-		wp_enqueue_style( 'bs-print', get_theme_file_uri( '/assets/css/print.min.css' ), [], '', 'print' );
+		wp_enqueue_style( 'mixes-print', get_theme_file_uri( '/assets/css/print.min.css' ), [], '', 'print' );
 
 	}
 
@@ -475,13 +475,13 @@ final class Functions {
  * @access public
  * @return object
  */
-function bst_theme() {
+function mixes_theme() {
 
-	$bst_theme = Functions::get_instance();
+	$mixes_theme = Functions::get_instance();
 
-	return $bst_theme;
+	return $mixes_theme;
 
 }
 
 // Run the Functions class.
-bst_theme();
+mixes_theme();
