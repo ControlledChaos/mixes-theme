@@ -3,7 +3,7 @@
  * The template for displaying search results pages
  *
  * @package    WordPress/ClassicPress
- * @subpackage BS_Theme
+ * @subpackage Monica_Mixes_Theme
  * @since      1.0.0
  */
 
@@ -16,7 +16,7 @@ get_header(); ?>
 
 			<header class="page-header">
 				<h1 class="page-title">
-					<?php printf( esc_html__( 'Search Results for: %s', 'bs-theme' ), '<span>' . get_search_query() . '</span>' );
+					<?php printf( esc_html__( 'Search Results for: %s', 'mixes-theme' ), '<span>' . get_search_query() . '</span>' );
 					?>
 				</h1>
 			</header>

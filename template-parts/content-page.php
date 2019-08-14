@@ -3,7 +3,7 @@
  * Template part for displaying page content in page.php
  *
  * @package    WordPress/ClassicPress
- * @subpackage BS_Theme
+ * @subpackage Monica_Mixes_Theme
  * @since      1.0.0
  */
 
@@ -14,14 +14,14 @@
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 	</header>
 
-	<?php BS_Theme\Includes\bst_theme_post_thumbnail(); ?>
+	<?php Monica_Mixes_Theme\Includes\bst_theme_post_thumbnail(); ?>
 
 	<div class="entry-content" itemprop="articleBody">
 		<?php
 		the_content();
 
 		wp_link_pages( array(
-			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'bs-theme' ),
+			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'mixes-theme' ),
 			'after'  => '</div>',
 		) );
 		?>
@@ -33,7 +33,7 @@
 			edit_post_link(
 				sprintf(
 					wp_kses(
-						__( 'Edit <span class="screen-reader-text">%s</span>', 'bs-theme' ),
+						__( 'Edit <span class="screen-reader-text">%s</span>', 'mixes-theme' ),
 						array(
 							'span' => array(
 								'class' => array(),

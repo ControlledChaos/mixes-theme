@@ -1,17 +1,17 @@
 <?php
 /**
- * BS Theme functions
+ * Monica Mixes Theme functions
  *
  * @package    WordPress/ClassicPress
- * @subpackage BS_Theme
+ * @subpackage Monica_Mixes_Theme
  * @author     Greg Sweet <greg@ccdzine.com>
  * @copyright  Copyright (c) Greg Sweet
- * @link       https://github.com/ControlledChaos/bs-theme
+ * @link       https://github.com/ControlledChaos/mixes-theme
  * @license    http://www.gnu.org/licenses/gpl-3.0.html
  * @since      1.0.0
  */
 
-namespace BS_Theme\Functions;
+namespace Mixes\Functions;
 
 // Restrict direct access.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -133,7 +133,7 @@ final class Functions {
 		 *
 		 * @since 1.0.0
 		 */
-		load_theme_textdomain( 'bs-theme' );
+		load_theme_textdomain( 'mixes-theme' );
 
 		/**
 		 * Add theme support
@@ -168,37 +168,37 @@ final class Functions {
 		 */
 		$color_args = [
 			[
-				'name'  => __( 'Text', 'bs-theme' ),
+				'name'  => __( 'Text', 'mixes-theme' ),
 				'slug'  => 'bst-text',
 				'color' => '#333333',
 			],
 			[
-				'name'  => __( 'Light Gray', 'bs-theme' ),
+				'name'  => __( 'Light Gray', 'mixes-theme' ),
 				'slug'  => 'bst-light-gray',
 				'color' => '#888888',
 			],
 			[
-				'name'  => __( 'Pale Gray', 'bs-theme' ),
+				'name'  => __( 'Pale Gray', 'mixes-theme' ),
 				'slug'  => 'bst-pale-gray',
 				'color' => '#cccccc',
 			],
 			[
-				'name'  => __( 'White', 'bs-theme' ),
+				'name'  => __( 'White', 'mixes-theme' ),
 				'slug'  => 'bst-white',
 				'color' => '#ffffff',
 			],
 			[
-				'name'  => __( 'Error Red', 'bs-theme' ),
+				'name'  => __( 'Error Red', 'mixes-theme' ),
 				'slug'  => 'bst-error',
 				'color' => '#dc3232',
 			],
 			[
-				'name'  => __( 'Warning Yellow', 'bs-theme' ),
+				'name'  => __( 'Warning Yellow', 'mixes-theme' ),
 				'slug'  => 'bst-warning',
 				'color' => '#ffb900',
 			],
 			[
-				'name'  => __( 'Success Green', 'bs-theme' ),
+				'name'  => __( 'Success Green', 'mixes-theme' ),
 				'slug'  => 'bst-success',
 				'color' => '#46b450',
 			]
@@ -234,14 +234,14 @@ final class Functions {
 		 */
 
 		// 16:9 HD Video.
-		add_image_size( __( 'video', 'bs-theme' ), 1280, 720, true );
-		add_image_size( __( 'video-md', 'bs-theme' ), 960, 540, true );
-		add_image_size( __( 'video-sm', 'bs-theme' ), 640, 360, true );
+		add_image_size( __( 'video', 'mixes-theme' ), 1280, 720, true );
+		add_image_size( __( 'video-md', 'mixes-theme' ), 960, 540, true );
+		add_image_size( __( 'video-sm', 'mixes-theme' ), 640, 360, true );
 
 		// 21:9 Cinemascope.
-		add_image_size( __( 'banner', 'bs-theme' ), 1280, 549, true );
-		add_image_size( __( 'banner-md', 'bs-theme' ), 960, 411, true );
-		add_image_size( __( 'banner-sm', 'bs-theme' ), 640, 274, true );
+		add_image_size( __( 'banner', 'mixes-theme' ), 1280, 549, true );
+		add_image_size( __( 'banner-md', 'mixes-theme' ), 960, 411, true );
+		add_image_size( __( 'banner-sm', 'mixes-theme' ), 640, 274, true );
 
 		/**
 		 * Custom header for the front page.
@@ -259,7 +259,7 @@ final class Functions {
 			'default-image' => [
 				'url'           => '%s/assets/images/header.jpg',
 				'thumbnail_url' => '%s/assets/images/header.jpg',
-				'description'   => __( 'Default Header Image', 'bs-theme' ),
+				'description'   => __( 'Default Header Image', 'mixes-theme' ),
 			],
 		] );
 
@@ -300,9 +300,9 @@ final class Functions {
 		 * @since  1.0.0
 		 */
 		register_nav_menus( [
-			'main'   => __( 'Main Menu', 'bs-theme' ),
-			'footer' => __( 'Footer Menu', 'bs-theme' ),
-			'social' => __( 'Social Menu', 'bs-theme' )
+			'main'   => __( 'Main Menu', 'mixes-theme' ),
+			'footer' => __( 'Footer Menu', 'mixes-theme' ),
+			'social' => __( 'Social Menu', 'mixes-theme' )
 		] );
 
 		/**
@@ -324,9 +324,9 @@ final class Functions {
 	public function widgets() {
 
 		register_sidebar( [
-			'name'          => esc_html__( 'Sidebar', 'bs-theme' ),
+			'name'          => esc_html__( 'Sidebar', 'mixes-theme' ),
 			'id'            => 'sidebar',
-			'description'   => esc_html__( 'Add widgets here.', 'bs-theme' ),
+			'description'   => esc_html__( 'Add widgets here.', 'mixes-theme' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h3 class="widget-title">',
@@ -381,7 +381,7 @@ final class Functions {
 
 		wp_enqueue_script( 'test-navigation', get_theme_file_uri( '/assets/js/navigation.min.js' ), [], null, true );
 
-		wp_enqueue_script( 'bs-theme-skip-link-focus-fix', get_theme_file_uri( '/assets/js/skip-link-focus-fix.min.js' ), [], null, true );
+		wp_enqueue_script( 'mixes-theme-skip-link-focus-fix', get_theme_file_uri( '/assets/js/skip-link-focus-fix.min.js' ), [], null, true );
 
 		// Comments scripts.
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -418,7 +418,7 @@ final class Functions {
 		 * The main stylesheet, in the root directory, only contains the theme header but
 		 * it is necessary for theme activation. DO NOT delete the main stylesheet!
 		 */
-		wp_enqueue_style( 'bs-theme', get_theme_file_uri( '/assets/css/style.min.css' ), [], '' );
+		wp_enqueue_style( 'mixes-theme', get_theme_file_uri( '/assets/css/style.min.css' ), [], '' );
 
 		// Print styles.
 		wp_enqueue_style( 'bs-print', get_theme_file_uri( '/assets/css/print.min.css' ), [], '', 'print' );

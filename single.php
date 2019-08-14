@@ -3,7 +3,7 @@
  * The template for displaying all single posts
  *
  * @package    WordPress/ClassicPress
- * @subpackage BS_Theme
+ * @subpackage Monica_Mixes_Theme
  * @since      1.0.0
  */
 

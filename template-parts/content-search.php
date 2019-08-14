@@ -3,7 +3,7 @@
  * Template part for displaying results in search pages
  *
  * @package    WordPress/ClassicPress
- * @subpackage BS_Theme
+ * @subpackage Monica_Mixes_Theme
  * @since      1.0.0
  */
 
@@ -16,20 +16,20 @@
 		<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
 			<?php
-			BS_Theme\Includes\bst_theme_posted_on();
-			BS_Theme\Includes\bst_theme_posted_by();
+			Monica_Mixes_Theme\Includes\bst_theme_posted_on();
+			Monica_Mixes_Theme\Includes\bst_theme_posted_by();
 			?>
 		</div>
 		<?php endif; ?>
 	</header>
 
-	<?php BS_Theme\Includes\bst_theme_post_thumbnail(); ?>
+	<?php Monica_Mixes_Theme\Includes\bst_theme_post_thumbnail(); ?>
 
 	<div class="entry-summary">
 		<?php the_excerpt(); ?>
 	</div>
 
 	<footer class="entry-footer">
-		<?php BS_Theme\Includes\bst_theme_entry_footer(); ?>
+		<?php Monica_Mixes_Theme\Includes\bst_theme_entry_footer(); ?>
 	</footer><
 </article>

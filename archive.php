@@ -3,7 +3,7 @@
  * The template for displaying archive pages
  *
  * @package    WordPress/ClassicPress
- * @subpackage BS_Theme
+ * @subpackage Monica_Mixes_Theme
  * @since      1.0.0
  */
 

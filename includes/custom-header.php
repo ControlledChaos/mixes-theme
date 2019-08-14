@@ -6,7 +6,7 @@
  * `<?php the_header_image_tag(); ?>`
  *
  * @package    WordPress/ClassicPress
- * @subpackage BS_Theme
+ * @subpackage Monica_Mixes_Theme
  * @since      1.0.0
  */
 

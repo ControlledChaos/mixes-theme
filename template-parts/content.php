@@ -3,7 +3,7 @@
  * Template part for displaying posts
  *
  * @package    WordPress/ClassicPress
- * @subpackage BS_Theme
+ * @subpackage Monica_Mixes_Theme
  * @since      1.0.0
  */
 
@@ -22,20 +22,20 @@
 			?>
 			<div class="entry-meta">
 				<?php
-				BS_Theme\Includes\bst_theme_posted_on();
-				BS_Theme\Includes\bst_theme_posted_by();
+				Monica_Mixes_Theme\Includes\bst_theme_posted_on();
+				Monica_Mixes_Theme\Includes\bst_theme_posted_by();
 				?>
 			</div>
 		<?php endif; ?>
 	</header>
 
-	<?php BS_Theme\Includes\bst_theme_post_thumbnail(); ?>
+	<?php Monica_Mixes_Theme\Includes\bst_theme_post_thumbnail(); ?>
 
 	<div class="entry-content" itemprop="articleBody">
 		<?php
 		the_content( sprintf(
 			wp_kses(
-				__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'bs-theme' ),
+				__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'mixes-theme' ),
 				array(
 					'span' => array(
 						'class' => array(),
@@ -46,13 +46,13 @@
 		) );
 
 		wp_link_pages( array(
-			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'bs-theme' ),
+			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'mixes-theme' ),
 			'after'  => '</div>',
 		) );
 		?>
 	</div>
 
 	<footer class="entry-footer">
-		<?php BS_Theme\Includes\bst_theme_entry_footer(); ?>
+		<?php Monica_Mixes_Theme\Includes\bst_theme_entry_footer(); ?>
 	</footer>
 </article>

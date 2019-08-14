@@ -5,7 +5,7 @@
  * This is the template that displays all of the <head> section and everything up until <div id="content">
  *
  * @package    WordPress/ClassicPress
- * @subpackage BS_Theme
+ * @subpackage Monica_Mixes_Theme
  * @since      1.0.0
  */
 
@@ -42,8 +42,8 @@ if ( is_home() && ! is_front_page() ) {
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="site" itemscope="itemscope" itemtype="<?php BS_Theme\Includes\bst_site_schema(); ?>">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'bs-theme' ); ?></a>
+<div id="page" class="site" itemscope="itemscope" itemtype="<?php Monica_Mixes_Theme\Includes\bst_site_schema(); ?>">
+	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'mixes-theme' ); ?></a>
 
 	<header id="masthead" class="site-header" role="banner" itemscope="itemscope" itemtype="http://schema.org/Organization">
 		<div class="site-branding">
@@ -62,7 +62,7 @@ if ( is_home() && ! is_front_page() ) {
 		</div>
 
 		<nav id="site-navigation" class="main-navigation" role="directory" itemscope itemtype="http://schema.org/SiteNavigationElement">
-			<button class="menu-toggle" aria-controls="main-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'bs-theme' ); ?></button>
+			<button class="menu-toggle" aria-controls="main-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'mixes-theme' ); ?></button>
 			<?php
 			wp_nav_menu( array(
 				'theme_location' => 'main',
