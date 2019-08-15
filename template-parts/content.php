@@ -22,14 +22,14 @@
 			?>
 			<div class="entry-meta">
 				<?php
-				Mixes\Includes\mixes_theme_posted_on();
-				Mixes\Includes\mixes_theme_posted_by();
+				Mixes\Tags\posted_on();
+				Mixes\Tags\posted_by();
 				?>
 			</div>
 		<?php endif; ?>
 	</header>
 
-	<?php Mixes\Includes\mixes_theme_post_thumbnail(); ?>
+	<?php Mixes\Tags\post_thumbnail(); ?>
 
 	<div class="entry-content" itemprop="articleBody">
 		<?php
@@ -53,6 +53,6 @@
 	</div>
 
 	<footer class="entry-footer">
-		<?php Mixes\Includes\mixes_theme_entry_footer(); ?>
+		<?php Mixes\Tags\entry_footer(); ?>
 	</footer>
 </article>

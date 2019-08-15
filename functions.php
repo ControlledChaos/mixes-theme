@@ -1,6 +1,6 @@
 <?php
 /**
- * Monica Mixes Theme functions
+ * Monica Mixes theme functions
  *
  * @package    WordPress/ClassicPress
  * @subpackage Monica_Mixes_Theme
@@ -11,6 +11,7 @@
  * @since      1.0.0
  */
 
+// Namespace specificity for theme functions & filters.
 namespace Mixes\Functions;
 
 // Restrict direct access.
@@ -22,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 /**
- * Sequoia Riverfront Cabins functions class
+ * Monica Mixes theme functions class
  *
  * @since  1.0.0
  * @access public

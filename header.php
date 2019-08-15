@@ -42,7 +42,7 @@ if ( is_home() && ! is_front_page() ) {
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="site" itemscope="itemscope" itemtype="<?php Mixes\Includes\mixes_site_schema(); ?>">
+<div id="page" class="site" itemscope="itemscope" itemtype="<?php Mixes\Tags\site_schema(); ?>">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'mixes-theme' ); ?></a>
 
 	<header id="masthead" class="site-header" role="banner" itemscope="itemscope" itemtype="http://schema.org/Organization">
