@@ -1,7 +1,22 @@
 /**
  * Comments
  */
- .comment-content a {
+.comments-title {
+	font-size: $px21;
+	font-weight: 500;
+	text-transform: none;
+	color: $dark_gray;
+}
+
+.comment-list {
+	padding-left: 1em;
+
+	ol {
+		margin-left: 1em;
+	}
+}
+
+.comment-content a {
 	word-wrap: break-word;
 }
 

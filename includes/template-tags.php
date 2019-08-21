@@ -10,6 +10,11 @@
 // Namespace specificity for theme functions & filters.
 namespace Mixes\Tags;
 
+// Restrict direct access.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Check if WordPress is 5.0 or greater.
  *
@@ -103,6 +108,10 @@ function theme_acf_options() {
 
 /**
  * Conditional Schema attributes for `<div id="page"`
+ *
+ * @since  1.0.0
+ * @access public
+ * @return string
  */
 function site_schema() {
 
@@ -130,7 +139,11 @@ function site_schema() {
 }
 
 /**
- * Prints HTML with meta information for the current post-date/time.
+ * Print HTML with meta information for the current post-date/time
+ *
+ * @since  1.0.0
+ * @access public
+ * @return string
  */
 function posted_on() {
 
@@ -148,7 +161,7 @@ function posted_on() {
 
 	$posted_on = sprintf(
 		/* translators: %s: post date. */
-		esc_html_x( 'Posted on %s', 'post date', 'mixes-theme' ),
+		esc_html_x( '%s', 'post date', 'mixes-theme' ),
 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 
@@ -157,7 +170,11 @@ function posted_on() {
 }
 
 /**
- * Prints HTML with meta information for the current author.
+ * Prints HTML with meta information for the current author
+ *
+ * @since  1.0.0
+ * @access public
+ * @return string
  */
 function posted_by() {
 
@@ -172,6 +189,10 @@ function posted_by() {
 
 /**
  * Prints HTML with meta information for the categories, tags and comments
+ *
+ * @since  1.0.0
+ * @access public
+ * @return string
  */
 function entry_footer() {
 
@@ -198,11 +219,11 @@ function entry_footer() {
 			sprintf(
 				wp_kses(
 					__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'mixes-theme' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
+					[
+						'span' => [
+							'class' => [],
+						],
+					]
 				),
 				get_the_title()
 			)
@@ -210,29 +231,17 @@ function entry_footer() {
 		echo '</span>';
 	}
 
-	edit_post_link(
-		sprintf(
-			wp_kses(
-				__( 'Edit <span class="screen-reader-text">%s</span>', 'mixes-theme' ),
-				array(
-					'span' => array(
-						'class' => array(),
-					),
-				)
-			),
-			get_the_title()
-		),
-		'<span class="edit-link">',
-		'</span>'
-	);
-
 }
 
 /**
- * Displays an optional post thumbnail.
+ * Displays an optional post thumbnail
  *
  * Wraps the post thumbnail in an anchor element on index views, or a div
  * element when on single views.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return string
  */
 function post_thumbnail() {
 
@@ -251,14 +260,41 @@ function post_thumbnail() {
 
 	<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
 		<?php
-		the_post_thumbnail( 'post-thumbnail', array(
-			'alt' => the_title_attribute( array(
+		the_post_thumbnail( 'post-thumbnail', [
+			'alt' => the_title_attribute( [
 				'echo' => false,
-			) ),
-		) );
+			] ),
+		] );
 		?>
 	</a>
 
 	<?php
 	endif;
+}
+
+/**
+ * Posts navigation for index and archive pages
+ *
+ * @since  1.0.0
+ * @access public
+ * @return string
+ */
+function posts_navigation() {
+
+	// Previous link.
+	$prev_text = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="theme-icon menu-prev"><path d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"/></svg>';
+	$prev_text .= __( 'Back', 'mixes-theme' );
+
+	// Next link.
+	$next_text = __( 'Onward', 'mixes-theme' );
+	$next_text .= '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="theme-icon menu-next"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>';
+
+	// Array to return.
+	$posts_navigation = the_posts_navigation( [
+		'prev_text' => $prev_text,
+		'next_text' => $next_text,
+	] );
+
+	return $posts_navigation;
+
 }

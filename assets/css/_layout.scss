@@ -1,7 +1,19 @@
+.site-content {
+	margin-top: $px40;
+}
+
+body:not(.home) .site-content {
+	display: flex;
+
+	.content-area {
+		flex-grow: 2;
+	}
+}
+
 .site {
 	max-width: 1280px;
 	margin: 0 auto;
-	padding: 2em;
+	padding: 0 2em;
 }
 
 main article {

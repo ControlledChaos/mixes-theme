@@ -27,12 +27,12 @@ if ( post_password_required() ) {
 			$mixes_theme_comment_count = get_comments_number();
 			if ( '1' === $mixes_theme_comment_count ) {
 				printf(
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'mixes-theme' ),
+					esc_html__( 'One Thought on &ldquo;%1$s&rdquo;', 'mixes-theme' ),
 					'<span>' . get_the_title() . '</span>'
 				);
 			} else {
 				printf(
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $mixes_theme_comment_count, 'comments title', 'mixes-theme' ) ),
+					esc_html( _nx( '%1$s Thought on &ldquo;%2$s&rdquo;', '%1$s Thoughts on &ldquo;%2$s&rdquo;', $mixes_theme_comment_count, 'comments title', 'mixes-theme' ) ),
 					number_format_i18n( $mixes_theme_comment_count ),
 					'<span>' . get_the_title() . '</span>'
 				);
@@ -44,10 +44,10 @@ if ( post_password_required() ) {
 
 		<ol class="comment-list">
 			<?php
-			wp_list_comments( array(
+			wp_list_comments( [
 				'style'      => 'ol',
 				'short_ping' => true,
-			) );
+			] );
 			?>
 		</ol>
 

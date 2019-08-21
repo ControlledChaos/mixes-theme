@@ -33,3 +33,66 @@
 .entry-footer span {
 	margin-right: 1em;
 }
+
+/**
+ * Content Grids
+ */
+.posts-grid {
+
+	ul {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-gap: 0.5em 0.5em;
+		padding-left: 0;
+		list-style: none;
+
+		li {
+
+			a {
+				display: block;
+				text-decoration: none;
+			}
+
+			h3 {
+				color: $text;
+
+				&:hover,
+				&:focus {
+					color: $gray;
+				}
+			}
+		}
+
+		figure {
+
+			img {
+				display: block;
+			}
+		}
+
+		.posts-grid-summary {
+			margin-top: 0.5;
+			line-height: 1.25;
+			font-size: $px17;
+		}
+
+		.posts-grid-link {
+			font-size: $px17;
+			line-height: 1;
+
+			a {
+				font-weight: bold;
+				font-weight: 600;
+
+				svg {
+					display: inline-block;
+					width: 1em;
+					height: 1em;
+					vertical-align: middle;
+					margin-left: 0;
+					fill: currentColor;
+				}
+			}
+		}
+	}
+}

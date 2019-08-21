@@ -1,14 +1,14 @@
 /**
  * Forms
  */
- form * + * {
+form * + * {
 	margin-top: 1em;
 }
 
 fieldset {
 	margin-top: 1em;
 	padding: 1em 1.5em;
-	border: solid 1px #ccc;
+	border: solid 1px $pale_gray;
 }
 
 legend {
@@ -25,11 +25,13 @@ form button {
 	max-width: 640px;
 	padding: 0.5em 1em;
 	font: inherit;
-	background: #fff;
+	background: $white;
 }
 
 label + input:not([type="checkbox"]):not([type="radio"]),
 label ~ input:not([type="checkbox"]):not([type="radio"]),
+label + button,
+label ~ button,
 label + textarea,
 label ~ textarea,
 label + select,
@@ -45,7 +47,9 @@ input[type="password"],
 input[type="url"],
 input[type="tel"] {}
 
-input[type="search"] {}
+input[type="search"] {
+	margin-right: 0.2em;
+}
 
 input[type="radio"],
 input[type="checkbox"] {
@@ -53,13 +57,35 @@ input[type="checkbox"] {
 	cursor: pointer;
 }
 
-button,
+button:not(.menu-toggle),
+button[type="submit"],
 input[type="submit"],
 input[type="button"],
 input[type="reset"],
 input[type="image"] {
 	width: auto;
+	padding: 1em 1em 0.75em;
 	cursor: pointer;
+	font-family: $headings;
+	font-size: $px18;
+	font-weight: 700;
+	line-height: 1;
+	text-transform: uppercase;
+	background: $gray;
+	color: $white;
+	border: solid 1px $gray;
+
+	&:hover,
+	&:focus {
+		background: $light_gray;
+		border-color: $light_gray;
+	}
+
+	svg {
+		width: $px24;
+		height: $px24;
+		fill: currentColor;
+	}
 }
 
 input[type="number"] {

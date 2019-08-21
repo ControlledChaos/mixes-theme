@@ -62,6 +62,9 @@ final class Functions {
 	 */
 	public function __construct() {
 
+		// Add theme settings page to the admin menu.
+		add_action( 'admin_menu', [ $this, 'settings_page' ] );
+
 		// Swap html 'no-js' class with 'js'.
 		add_action( 'wp_head', [ $this, 'js_detect' ], 0 );
 
@@ -99,8 +102,68 @@ final class Functions {
 		// jQuery UI fallback for HTML5 Contact Form 7 form fields.
 		add_filter( 'wpcf7_support_html5_fallback', '__return_true' );
 
-		// Remove WooCommerce styles.
-		add_filter( 'woocommerce_enqueue_styles', '__return_false' );
+		// Set featured image metabox text.
+		add_filter( 'admin_post_thumbnail_html', [ $this, 'set_featured_image_text' ] );
+
+		// Add post types to category archives.
+		add_filter( 'pre_get_posts', [ $this, 'query_post_type' ] );
+
+		// Remove prepend text from archive titles.
+		add_filter( 'get_the_archive_title', [ $this, 'archive_title' ] );
+
+		// Remove the user admin color scheme picker.
+		remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
+
+	}
+
+	/**
+	 * Add a page for theme settings
+	 *
+	 * Only works if ACF Pro is active.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+    public function settings_page() {
+
+		if ( class_exists( 'acf_pro' ) ) {
+
+			// Page arguments.
+			$settings = [
+				'page_title' => __( 'Theme Settings', 'mixes-theme' ),
+				'menu_title' => __( 'Theme Settings', 'mixes-theme' ),
+				'menu_slug'  => 'mixes-theme-settings',
+				'parent'     => 'themes.php',
+				'capability' => 'manage_options'
+			];
+
+			// Add the settings page.
+			acf_add_options_page( $settings );
+		}
+
+	}
+
+	/**
+	 * Theme dependencies
+	 *
+	 * @since  1.0.0
+	 * @access private
+	 * @return void
+	 */
+	private function dependencies() {
+
+		// Get ACF fields.
+		require get_theme_file_path( '/includes/acf-fields.php' );
+
+		// Get template tags.
+		require get_theme_file_path( '/includes/template-tags.php' );
+
+		// Get template functions
+		require get_theme_file_path( '/includes/template-functions.php' );
+
+		// Get theme customizer functions.
+		require get_theme_file_path( '/includes/customizer.php' );
 
 	}
 
@@ -144,9 +207,6 @@ final class Functions {
 
 		// Browser title tag support.
 		add_theme_support( 'title-tag' );
-
-		// Background color & image support.
-		add_theme_support( 'custom-background' );
 
 		// RSS feed links support.
 		add_theme_support( 'automatic-feed-links' );
@@ -213,12 +273,6 @@ final class Functions {
 
 		add_theme_support( 'align-wide' );
 
-		/**
-		 * Add theme support.
-		 *
-		 * @since 1.0.0
-		 */
-
 		// Customizer widget refresh support.
 		add_theme_support( 'customize-selective-refresh-widgets' );
 
@@ -233,6 +287,10 @@ final class Functions {
 		 *
 		 * @since 1.0.0
 		 */
+		set_post_thumbnail_size( 2048, 1152, [ 'center', 'center' ] );
+
+		// Featured images, post thumbnail size.
+		add_image_size( __( 'featured-image', 'mixes-theme' ), 2048, 1152, true );
 
 		// 16:9 HD Video.
 		add_image_size( __( 'video', 'mixes-theme' ), 1280, 720, true );
@@ -248,20 +306,47 @@ final class Functions {
 		 * Custom header for the front page.
 		 */
 		add_theme_support( 'custom-header', apply_filters( 'mixes_custom_header_args', [
-			'default-image'      => get_parent_theme_file_uri( '/assets/images/header.jpg' ),
-			'width'              => 2048,
-			'height'             => 878,
-			'flex-height'        => true,
-			'video'              => false,
-			'wp-head-callback'   => null
+			'default-image'          => get_parent_theme_file_uri( '/assets/images/header.jpg' ),
+			'width'                  => 2048,
+			'height'                 => 1152,
+			'flex-width'             => true,
+			'flex-height'            => true,
+			'video'                  => false,
+			'uploads'                => true,
+			'random-default'         => true,
+			'header-text'            => false,
+			'default-text-color'     => null,
+			'wp-head-callback'       => null,
+			'admin-head-callback'    => null,
+			'admin-preview-callback' => null
 		] ) );
 
 		register_default_headers( [
-			'default-image' => [
-				'url'           => '%s/assets/images/header.jpg',
-				'thumbnail_url' => '%s/assets/images/header.jpg',
-				'description'   => __( 'Default Header Image', 'mixes-theme' ),
+			'default-header-01' => [
+				'url'           => '%s/assets/images/default-header-01.jpg',
+				'thumbnail_url' => '%s/assets/images/default-header-01.jpg',
+				'description'   => __( 'Default Header Image 01', 'mixes-theme' ),
 			],
+			'default-header-02' => [
+				'url'           => '%s/assets/images/default-header-02.jpg',
+				'thumbnail_url' => '%s/assets/images/default-header-02.jpg',
+				'description'   => __( 'Default Header Image 02', 'mixes-theme' ),
+			],
+			'default-header-03' => [
+				'url'           => '%s/assets/images/default-header-03.jpg',
+				'thumbnail_url' => '%s/assets/images/default-header-03.jpg',
+				'description'   => __( 'Default Header Image 03', 'mixes-theme' ),
+			],
+			'default-header-04' => [
+				'url'           => '%s/assets/images/default-header-04.jpg',
+				'thumbnail_url' => '%s/assets/images/default-header-04.jpg',
+				'description'   => __( 'Default Header Image 04', 'mixes-theme' ),
+			],
+			'default-header-05' => [
+				'url'           => '%s/assets/images/default-header-05.jpg',
+				'thumbnail_url' => '%s/assets/images/default-header-05.jpg',
+				'description'   => __( 'Default Header Image 05', 'mixes-theme' ),
+			]
 		] );
 
 		/**
@@ -327,11 +412,21 @@ final class Functions {
 		register_sidebar( [
 			'name'          => esc_html__( 'Sidebar', 'mixes-theme' ),
 			'id'            => 'sidebar',
-			'description'   => esc_html__( 'Add widgets here.', 'mixes-theme' ),
+			'description'   => esc_html__( 'Add widgets to the right sidebar.', 'mixes-theme' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h3 class="widget-title">',
 			'after_title'   => '</h3>',
+		] );
+
+		register_sidebar( [
+			'name'          => esc_html__( 'Search Page', 'mixes-theme' ),
+			'id'            => 'search-page',
+			'description'   => esc_html__( 'Add widgets to the search page.', 'mixes-theme' ),
+			'before_widget' => '<section id="%1$s" class="widget search-page-widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
 		] );
 
 	}
@@ -410,7 +505,7 @@ final class Functions {
 	public function frontend_styles() {
 
 		// Google fonts.
-		wp_enqueue_style( 'mixes-google-fonts', 'https://fonts.googleapis.com/css?family=Montserrat:300,400,400i,500,500i,600,700,700i,800,900&display=swap', [], '', 'screen' );
+		wp_enqueue_style( 'mixes-google-fonts', 'https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i&display=swap', [], '', 'screen' );
 
 		/**
 		 * Theme sylesheet
@@ -433,7 +528,15 @@ final class Functions {
 	 * @access public
 	 * @return void
 	 */
-	public function admin_styles() {}
+	public function admin_styles() {
+
+		// Google fonts.
+		wp_enqueue_style( 'mixes-google-fonts', 'https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i&display=swap', [], '', 'screen' );
+
+		// Admin styles.
+		wp_enqueue_style( 'mixes-admin', get_theme_file_uri( '/assets/css/admin.min.css' ), [], '' );
+
+	}
 
 	/**
 	 * Login styles
@@ -449,18 +552,88 @@ final class Functions {
 	}
 
 	/**
-	 * Theme dependencies
+	 * Set featured image metabox text
+	 *
+	 * Replaces the text of the "Set featured image" link.
 	 *
 	 * @since  1.0.0
-	 * @access private
-	 * @return void
+	 * @access public
+	 * @return string Returns the text to be added to the metabox.
 	 */
-	private function dependencies() {
+	function set_featured_image_text( $content ) {
 
-		require get_theme_file_path( '/includes/custom-header.php' );
-		require get_theme_file_path( '/includes/template-tags.php' );
-		require get_theme_file_path( '/includes/template-functions.php' );
-		require get_theme_file_path( '/includes/customizer.php' );
+		return $content = str_replace(
+
+			// Default text.
+			__( 'Set featured image' ),
+
+			// New text.
+			__( 'Minimum 2048px by 878px', 'mixes-theme' ),
+			$content
+		);
+
+	}
+
+	/**
+	 * Add post types to category archives
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return array Returns an array of post types.
+	 */
+	public function query_post_type( $query ) {
+
+		if ( is_category() ) {
+
+			$post_type = get_query_var( 'post_type' );
+
+			if ( $post_type ) {
+				$post_type = $post_type;
+			} else {
+
+				// Don't forget nav_menu_item to allow menus to work!
+				$post_type = [ 'nav_menu_item', 'post', 'recipe' ];
+			}
+
+			// Set post types to the modified query.
+			$query->set( 'post_type', $post_type );
+
+			// Return the modified query.
+			return $query;
+		}
+	}
+
+	/**
+	 * Remove prepend text from archive titles
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return string Returns the ammended title.
+	 */
+	public function archive_title( $title ) {
+
+		// If is standard category archive.
+		if ( is_category() ) {
+			$title = single_cat_title( '', false );
+
+		// If is standard tag archive.
+		} elseif ( is_tag() ) {
+			$title = single_tag_title( '', false );
+
+		} elseif ( is_post_type_archive( 'recipe' ) ) {
+            $title = __( 'Explore Recipes', 'mixes-theme' );
+
+		// If is author archive.
+		} elseif ( is_author() ) {
+			$title = sprintf(
+				'%1s <span class="vcard">%2s</span>',
+				__( 'Posts by', 'mixes-theme' ),
+				get_the_author()
+			);
+		}
+
+		// Return the ammended title.
+    	return $title;
 
 	}
 

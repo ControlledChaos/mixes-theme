@@ -16,13 +16,18 @@
  */
 $white: #ffffff;
 $text: #333333;
-$link: #0000ee;
-$visited: #551a8b;
-$light_gray: #888888;
+$blue: #0088aa;
+$purple: #7752ad;
+$dark_gray: #555555;
+$gray: #777777;
+$light_gray: #999999;
 $pale_gray: #cccccc;
 $error: #dc3232;
 $warning: #ffb900;
 $success: #46b450;
+
+// Font families.
+$headings: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
 
 /**
  * Font sizes

@@ -7,48 +7,41 @@
  * @since      1.0.0
  */
 
+$title = sprintf(
+	'<h1 class="entry-title">%1s</h1>',
+	get_the_title()
+);
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> role="article">
 	<header class="entry-header">
-		<?php
-		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		endif;
+		<?php echo $title; ?>
 
-		if ( 'post' === get_post_type() ) :
-			?>
+		<?php if ( is_singular( [ 'post', 'recipe' ] ) ) : ?>
 			<div class="entry-meta">
-				<?php
-				Mixes\Tags\posted_on();
-				Mixes\Tags\posted_by();
-				?>
+				<?php Mixes\Tags\posted_on(); ?>
 			</div>
 		<?php endif; ?>
 	</header>
-
-	<?php Mixes\Tags\post_thumbnail(); ?>
-
 	<div class="entry-content" itemprop="articleBody">
 		<?php
 		the_content( sprintf(
 			wp_kses(
 				__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'mixes-theme' ),
-				array(
-					'span' => array(
-						'class' => array(),
-					),
-				)
+				[
+					'span' => [
+						'class' => [],
+					],
+				]
 			),
 			get_the_title()
 		) );
 
-		wp_link_pages( array(
+		wp_link_pages( [
 			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'mixes-theme' ),
 			'after'  => '</div>',
-		) );
+		] );
 		?>
 	</div>
 

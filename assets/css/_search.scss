@@ -1,0 +1,35 @@
+/**
+ * Search
+ */
+.search-page {
+
+	.search-page-content {
+
+		section:not(:first-of-type) {
+			margin-top: 2em;
+			border-top: solid 1px $pale_gray;
+		}
+
+		.search-page-widget {
+
+			ul {
+				padding: 0;
+
+				li {
+					display: inline-block;
+					margin: 0 0.3em 0 0;
+
+					input,
+					select {
+						margin: 0;
+						padding: 1em 1em 0.75em;
+					}
+				}
+			}
+
+			br {
+				display: none;
+			}
+		}
+	}
+}

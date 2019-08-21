@@ -9,15 +9,14 @@
 
 ?>
 
-<aside id="secondary" class="widget-area">
+<aside id="secondary" class="sidebar">
+	<?php get_search_form(); ?>
 	<?php
 		if ( is_active_sidebar( 'sidebar' ) ) :
 
 		dynamic_sidebar( 'sidebar' );
 
 		else : ?>
-
-    	<?php get_search_form(); ?>
 
     	<h3><?php _e( 'Archives', 'mixes-theme' ); ?></h3>
     	<ul>

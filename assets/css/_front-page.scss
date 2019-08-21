@@ -1,0 +1,13 @@
+/**
+ * Front page
+ */
+.home {
+
+	.posts-grid {
+
+		&.recent-posts {
+			margin-top: $px40;
+			border-top: solid 1px $pale_gray;
+		}
+	}
+}

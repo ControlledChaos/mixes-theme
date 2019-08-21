@@ -30,13 +30,13 @@ get_header(); ?>
 						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'mixes-theme' ); ?></h2>
 						<ul>
 							<?php
-							wp_list_categories( array(
+							wp_list_categories( [
 								'orderby'    => 'count',
 								'order'      => 'DESC',
 								'show_count' => 1,
 								'title_li'   => '',
 								'number'     => 10,
-							) );
+							] );
 							?>
 						</ul>
 					</div>

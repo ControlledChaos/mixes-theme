@@ -31,5 +31,5 @@
 
 	<footer class="entry-footer">
 		<?php Mixes\Tags\entry_footer(); ?>
-	</footer><
+	</footer>
 </article>

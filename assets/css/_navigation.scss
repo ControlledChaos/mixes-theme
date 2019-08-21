@@ -7,6 +7,10 @@
 	float: left;
 	width: 100%;
 	margin-top: 1em;
+	font-family: $headings;
+	font-size: $px19;
+	font-weight: 500;
+	font-variant: small-caps;
 
 	& ul {
 		display: none;
@@ -15,12 +19,15 @@
 		padding-left: 0;
 
 		& ul {
-			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-			float: left;
+			-webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+			        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+			float: right;
 			position: absolute;
 			top: 100%;
-			left: -999em;
+			right: -999em;
 			z-index: 99999;
+			padding: 0.5em 1em;
+			background: $white;
 
 			& ul {
 				left: -999em;
@@ -29,70 +36,135 @@
 
 			& li:hover > ul,
 			& li.focus > ul {
-				left: 100%;
+				right: 100%;
 			}
 
 			& a {
-				width: 200px;
+				width: auto;
 			}
 		}
 
 		& li:hover > ul,
 		& li.focus > ul {
-			left: auto;
+			right: 0;
 		}
 	}
 
 	& li {
 		position: relative;
+		margin-top: 0.5em;
 	}
 
 	& a {
 		display: inline-block;
 		text-decoration: none;
+		color: $gray;
+		transition: color .15s;
+
+		&:hover,
+		&:focus {
+			color: $blue;
+		}
+	}
+
+	.menu-toggle {
+		display: block;
+		background: none;
+		border: none;
+		color: $gray;
+
+		svg {
+			display: inline-block;
+			width: 1em;
+			height: 1em;
+			vertical-align: text-top;
+			fill: currentColor;
+
+			&.menu-close-icon {
+				display: none;
+				width: 1.2em;
+				height: 1.2em;
+			}
+		}
+	}
+
+	&.toggled {
+
+		.menu-toggle {
+
+			svg {
+
+				&.menu-close-icon {
+					display: inline-block;
+				}
+
+				&.menu-open-icon {
+					display: none;
+				}
+			}
+		}
+
+		ul {
+			display: block;
+		}
 	}
 }
 
-/* Small menu. */
-.menu-toggle,
-.main-navigation.toggled ul {
-	display: block;
+.no-js .menu-toggle {
+	display: none;
 }
 
 @media screen and (min-width: 37.5em) {
-	.menu-toggle {
-		display: none;
-	}
 
-	.main-navigation ul {
-		display: block;
-	}
+	.main-navigation {
 
-	.main-navigation div > ul > li {
-		display: inline;
-		position: relative;
-		margin-right: 1em;
+		ul {
+			display: block;
+			text-align: right;
+		}
+
+		div > ul > li {
+			display: inline;
+			position: relative;
+			margin-right: 1em;
+		}
+
+		.menu-toggle {
+			display: none;
+		}
 	}
 }
 
-.site-main .comment-navigation, .site-main
-.posts-navigation, .site-main
+.comment-navigation,
+.posts-navigation,
 .post-navigation {
-	margin: 0 0 1.5em;
+	margin-top: 2em;
 	overflow: hidden;
-}
 
-.comment-navigation .nav-previous,
-.posts-navigation .nav-previous,
-.post-navigation .nav-previous {
-	float: left;
-	width: 50%;
-}
+	svg {
+		display: inline-block;
+		vertical-align: middle;
+		width: 1em;
+		height: 1em;
+		fill: currentColor;
+	}
 
-.comment-navigation .nav-next,
-.posts-navigation .nav-next,
-.post-navigation .nav-next {
-	float: right;
-	text-align: right;
-	width: 50%;
+	.nav-previous {
+		float: left;
+		width: 50%;
+
+		.theme-icon {
+			margin-right: 0.3em;
+		}
+	}
+
+	.nav-next {
+		float: right;
+		text-align: right;
+		width: 50%;
+
+		.theme-icon {
+			margin-left: 0.3em;
+		}
+	}
 }

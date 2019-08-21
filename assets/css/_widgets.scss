@@ -1,11 +1,25 @@
 /**
  * Widgets
  */
- .widget {
-	margin: 0 0 1.5em;
-	/* Make sure select elements fit in widgets. */
+.sidebar {
+	min-width: 240px;
+	max-width: 320px;
+	margin-left: $px40;
 
-	& select {
-		max-width: 100%;
+	.widget {
+		margin: 0 0 1.5em;
+		/* Make sure select elements fit in widgets. */
+
+		& select {
+			max-width: 100%;
+		}
+	}
+
+	h3 {
+		color: $dark_gray;
+	}
+
+	ul {
+		list-style: none;
 	}
 }
