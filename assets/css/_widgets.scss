@@ -1,25 +1,59 @@
 /**
  * Widgets
  */
-.sidebar {
+.secondary {
 	min-width: 240px;
-	max-width: 320px;
-	margin-left: $px40;
+	margin-top: $px30;
+	border-top: solid 1px $theme_pale;
+
+	h3 {
+		color: $theme_dark;
+	}
+
+	ul {
+		list-style: none;
+
+		li {
+			width: 100%;
+		}
+	}
 
 	.widget {
 		margin: 0 0 1.5em;
 		/* Make sure select elements fit in widgets. */
 
-		& select {
+		input:not([type="checkbox"]):not([type="radio"]),
+		select,
+		textarea {
 			max-width: 100%;
+			margin: 0;
 		}
 	}
 
-	h3 {
-		color: $dark_gray;
+	// Search & Filter plugin.
+	.searchandfilter {
+
+		h4 {
+			margin: 0.5em 0 0.3em 0;
+		}
+
+		ul {
+			margin-top: 0.5em;
+		}
+
+		button[type="submit"],
+		input[type="submit"] {
+			float: right;
+		}
+	}
+}
+
+@media screen and (min-width: 37.5em) {
+
+	.secondary {
+		max-width: 320px;
+		margin: 0 0 0 $px40;
+		border: none;
 	}
 
-	ul {
-		list-style: none;
-	}
 }

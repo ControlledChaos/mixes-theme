@@ -3,6 +3,10 @@
  */
 .site-footer {
 	margin-top: $px30;
+
+	.footer-content {
+		padding: $px20;
+	}
 }
 
 .copyright-text {

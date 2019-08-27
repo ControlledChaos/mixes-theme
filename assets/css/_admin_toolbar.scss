@@ -3,7 +3,7 @@
  */
 #wpadminbar {
 	color: $white;
-	background: $gray;
+	background: $theme_color;
 }
 
 #wpadminbar .ab-item,
@@ -23,7 +23,7 @@
 #wpadminbar.nojs .ab-top-menu > li.menupop:hover > .ab-item,
 #wpadminbar .ab-top-menu > li.menupop.hover > .ab-item {
 	color: $white;
-	background: $light_gray;
+	background: $theme_light;
 }
 
 #wpadminbar:not(.mobile) > #wp-toolbar li:hover span.ab-label,
@@ -41,12 +41,12 @@ color: $white;
 
 /* Admin Bar: submenu */
 #wpadminbar .menupop .ab-sub-wrapper {
-	background: $gray;
+	background: $theme_color;
 }
 
 #wpadminbar .quicklinks .menupop ul.ab-sub-secondary,
 #wpadminbar .quicklinks .menupop ul.ab-sub-secondary .ab-submenu {
-	background: $light_gray;
+	background: $theme_light;
 }
 
 #wpadminbar .ab-submenu .ab-item,
@@ -79,7 +79,7 @@ color: $white;
 #wpadminbar li.hover .ab-item:before,
 #wpadminbar li:hover #adminbarsearch:before,
 #wpadminbar li #adminbarsearch.adminbar-focused:before {
-	background: $light_gray;
+	background: $theme_light;
 	color: $white;
 }
 
@@ -103,14 +103,14 @@ color: $white;
 }
 
 #wpadminbar > #wp-toolbar > #wp-admin-bar-top-secondary > #wp-admin-bar-search #adminbarsearch input.adminbar-input:focus {
-	color: $gray;
+	color: $theme_color;
 	background: #eee;
 }
 
 /* Admin Bar: my account */
 #wpadminbar .quicklinks li#wp-admin-bar-my-account.with-avatar > a img {
 	border: none;
-	background-color: $gray;
+	background-color: $theme_color;
 }
 
 #wpadminbar #wp-admin-bar-user-info .display-name {

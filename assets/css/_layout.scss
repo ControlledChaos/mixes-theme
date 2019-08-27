@@ -1,9 +1,6 @@
-.site-content {
-	margin-top: $px40;
-}
-
 body:not(.home) .site-content {
 	display: flex;
+	flex-direction: column;
 
 	.content-area {
 		flex-grow: 2;
@@ -13,40 +10,30 @@ body:not(.home) .site-content {
 .site {
 	max-width: 1280px;
 	margin: 0 auto;
-	padding: 0 2em;
+}
+
+.site-content {
+	margin-top: $px16;
+	padding: 0 $px20;
 }
 
 main article {
 	clear: both;
 }
 
+@media screen and (min-width: 37.5em) {
+
+	body:not(.home) .site-content {
+		flex-direction: row;
+	}
+
+	.site-content {
+		margin-top: $px40;
+	}
+
+}
+
 /* Do not show the outline on the skip link target. */
 #content[tabindex="-1"]:focus {
 	outline: 0;
-}
-
-.clear:before,
-.clear:after,
-.entry-content:before,
-.entry-content:after,
-.comment-content:before,
-.comment-content:after,
-.site-header:before,
-.site-header:after,
-.site-content:before,
-.site-content:after,
-.site-footer:before,
-.site-footer:after {
-	content: "";
-	display: table;
-	table-layout: fixed;
-}
-
-.clear:after,
-.entry-content:after,
-.comment-content:after,
-.site-header:after,
-.site-content:after,
-.site-footer:after {
-	clear: both;
 }

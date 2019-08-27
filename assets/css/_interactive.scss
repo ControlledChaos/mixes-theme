@@ -1,11 +1,16 @@
 /**
  * Comments
  */
+.comments-area {
+	margin-top: $px20;
+	border-top: solid 1px $theme_pale;
+}
+
 .comments-title {
 	font-size: $px21;
 	font-weight: 500;
 	text-transform: none;
-	color: $dark_gray;
+	color: $theme_dark;
 }
 
 .comment-list {
@@ -22,4 +27,8 @@
 
 .bypostauthor {
 	display: block;
+}
+
+#wp-comment-cookies-consent {
+	margin-right: 0.5em;
 }

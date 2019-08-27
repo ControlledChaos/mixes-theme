@@ -196,18 +196,39 @@ function posted_by() {
  */
 function entry_footer() {
 
+	// Categories icon.
+	$cat_icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 128H272l-64-64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48z"/></svg>';
+
+	// Tags icon.
+	$tags_icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>';
+
 	// Hide category and tag text for pages.
 	if ( 'post' === get_post_type() ) {
 
 		$categories_list = get_the_category_list( esc_html__( ', ', 'mixes-theme' ) );
 		if ( $categories_list ) {
-			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'mixes-theme' ) . '</span>', $categories_list );
+			printf(
+				'<span class="cat-links" title="%1s"><span class="post-meta-icon">%2s</span><span class="screen-reader-text">%3s</span> %4s</span>',
+				esc_html__( 'Posted in', 'mixes-theme' ),
+				$cat_icon,
+				esc_html__( 'Posted in', 'mixes-theme' ),
+				$categories_list
+			);
 		}
 
 		$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'mixes-theme' ) );
 
+		// Categories and tags separator if both are present.
+		if ( $categories_list && $tags_list ) { echo '<span clss="tax-links-separator">|</span>'; }
+
 		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'mixes-theme' ) . '</span>', $tags_list );
+			printf(
+				'<span class="tags-links" title="%1s"><span class="post-meta-icon">%2s</span><span class="screen-reader-text">%3s</span> %4s</span>',
+				esc_html__( 'Tagged', 'mixes-theme' ),
+				$tags_icon,
+				esc_html__( 'Tagged', 'mixes-theme' ),
+				$tags_list
+			);
 		}
 
 	}

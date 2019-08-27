@@ -17,7 +17,24 @@
  */
 if ( post_password_required() ) {
 	return;
-} ?>
+}
+
+// Message before the comment form.
+$comment_notes_before = sprintf(
+	'<p class="comment-form-notes">%1s</p>',
+	__( '', 'mixes-theme' )
+);
+
+// Arguments for the comment form.
+$comments_args = [
+	'title_reply'          => __( 'Leave a Comment', 'mixes-theme' ),
+	'title_reply_to'       => __( 'Reply to %s', 'mixes-theme' ),
+	'cancel_reply_link'    => __( 'Cancel reply', 'mixes-theme' ),
+	'label_submit'         => __( 'Submit', 'mixes-theme' ),
+	'comment_notes_before' => $comment_notes_before
+];
+
+?>
 
 <div id="comments" class="comments-area">
 
@@ -63,7 +80,7 @@ if ( post_password_required() ) {
 
 	endif; // Check for have_comments().
 
-	comment_form();
+	comment_form( $comments_args );
 	?>
 
 </div>

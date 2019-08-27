@@ -35,12 +35,6 @@ if ( is_singular() && ! has_post_thumbnail() ) {
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> role="article">
 	<header class="entry-header">
 		<?php echo $title; ?>
-
-		<?php if ( is_singular( [ 'post', 'recipe' ] ) ) : ?>
-			<div class="entry-meta">
-				<?php Mixes\Tags\posted_on(); ?>
-			</div>
-		<?php endif; ?>
 	</header>
 	<div class="entry-content" itemprop="articleBody">
 		<?php

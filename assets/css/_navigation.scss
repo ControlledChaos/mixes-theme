@@ -4,74 +4,93 @@
  .main-navigation {
 	clear: both;
 	display: block;
-	float: left;
 	width: 100%;
 	margin-top: 1em;
-	font-family: $headings;
-	font-size: $px19;
-	font-weight: 500;
-	font-variant: small-caps;
+
+	&.toggled {
+		margin-bottom: 2em;
+	}
+
+	.menu-toggle-wrap {
+		padding: 0 $px20 1em;
+		text-align: center;
+	}
 
 	& ul {
 		display: none;
 		list-style: none;
 		margin: 0;
-		padding-left: 0;
+		background: $theme_dark;
+		color: $white;
 
 		& ul {
-			-webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-			        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-			float: right;
-			position: absolute;
-			top: 100%;
-			right: -999em;
+			width: auto;
 			z-index: 99999;
-			padding: 0.5em 1em;
-			background: $white;
+			display: none;
+			padding: 0 1em;
 
 			& ul {
-				left: -999em;
+				right: 0;
 				top: 0;
+				display: none;
+			}
+
+			li {
+
+				a:before {
+					content: '- ';
+				}
 			}
 
 			& li:hover > ul,
 			& li.focus > ul {
-				right: 100%;
-			}
-
-			& a {
-				width: auto;
+				display: block;
 			}
 		}
 
 		& li:hover > ul,
 		& li.focus > ul {
-			right: 0;
+			display: block;
 		}
 	}
 
 	& li {
 		position: relative;
-		margin-top: 0.5em;
+		width: auto;
+		font-family: $headings;
+		font-size: $px19;
+		font-weight: 500;
+		font-variant: small-caps;
+
+		&.menu-item-has-children {
+			padding-bottom: 0;
+		}
 	}
 
 	& a {
 		display: inline-block;
+		width: 100%;
+		padding: 0.3em $px20;
 		text-decoration: none;
-		color: $gray;
-		transition: color .15s;
+		color: $white;
+		-webkit-transition: color .15s;
+		transition: all .15s;
 
 		&:hover,
 		&:focus {
-			color: $blue;
+			background: $theme_color;
 		}
 	}
 
 	.menu-toggle {
-		display: block;
+		display: inline-block;
 		background: none;
 		border: none;
-		color: $gray;
+		font-family: $headings;
+		font-size: $px27;
+		font-weight: 600;
+		font-variant: small-caps;
+		color: $theme_light;
 
 		svg {
 			display: inline-block;
@@ -110,26 +129,69 @@
 	}
 }
 
-.no-js .menu-toggle {
+.no-js .menu-toggle-wrap {
 	display: none;
 }
 
 @media screen and (min-width: 37.5em) {
 
 	.main-navigation {
+		margin: 1em 0 0;
 
 		ul {
 			display: block;
+			padding-bottom: 0;
 			text-align: right;
+			background: $white;
+			color: $theme_color;
+
+			ul {
+				position: absolute;
+				top: 100%;
+				right: -$px20;
+				padding: 0.5em $px20;
+				min-width: 160px;
+				background: $theme_color;
+				color: $white;
+
+				li {
+					margin-right: 0;
+
+					a:before {
+						content: '';
+					}
+
+					a {
+						width: auto;
+						padding: 0.3em 0;
+						color: $white;
+
+						&:hover,
+						&:focus {
+							color: $theme_pale;
+						}
+					}
+				}
+			}
+
+			li {
+				display: inline-block;
+				position: relative;
+				margin-right: 1em;
+
+				a {
+					padding: 0;
+					color: $theme_color;
+
+					&:hover,
+					&:focus {
+						background: none;
+					}
+				}
+			}
 		}
 
-		div > ul > li {
-			display: inline;
-			position: relative;
-			margin-right: 1em;
-		}
-
-		.menu-toggle {
+		.menu-toggle-wrap {
 			display: none;
 		}
 	}

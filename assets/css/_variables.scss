@@ -13,11 +13,17 @@
  * Some variables use colors set by args in the functions file.
  *
  * @see functions.php/setup
+ *
+ * Theme color options: #54545a, #6f6d72, #93939a, #c1bfc3
  */
 $white: #ffffff;
 $text: #333333;
-$blue: #0088aa;
-$purple: #7752ad;
+$link_primary: #5876a8;
+$link_secondary: #7093c2;
+$theme_dark: #54545a;
+$theme_color: #6f6d72;
+$theme_light: #93939a;
+$theme_pale: #c1bfc3;
 $dark_gray: #555555;
 $gray: #777777;
 $light_gray: #999999;

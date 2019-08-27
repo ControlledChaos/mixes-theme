@@ -4,6 +4,7 @@
 body {
 	background: #fff;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+	font-size: $px18;
 	line-height: 1.5;
 	color: $text;
 }
@@ -33,15 +34,15 @@ h3 {
 
 	a {
 		text-decoration: none;
-		color: $gray;
+		color: $theme_color;
 
 		&:visited {
-			color: $gray;
+			color: $theme_color;
 		}
 
 		&:hover,
 		&:focus {
-			color: $blue;
+			color: $link_primary;
 		}
 	}
 }
@@ -51,31 +52,44 @@ h2 {
 	font-size: $px32;
 	font-weight: 500;
 	text-transform: uppercase;
-	color: $gray;
+	color: $theme_color;
 
 	&.page-title {
 		font-size: $px26;
 		text-transform: none;
+
+		a {
+			display: inline-block;
+			line-height: 1;
+			border-bottom: dotted 2px $theme_light;
+		}
 	}
 }
 
 h3 {
 	font-size: $px21;
 	font-weight: 500;
-	color: $dark_gray;
+	color: $theme_dark;
+}
+
+h4 {
+	font-size: $px21;
+	font-weight: 600;
+	color: $theme_dark;
 }
 
 a,
 .taxonomy-heading-links a {
-	color: $blue;
+	color: $link_primary;
+	text-decoration: none;
 
 	&:visited {
-		color: $blue;
+		color: $link_primary;
 	}
 
 	&:hover,
 	&:focus {
-		color: $purple;
+		color: $link_secondary;
 	}
 }
 
@@ -88,7 +102,7 @@ a,
 
 b,
 strong {
-	color: $dark_gray;
+	color: $theme_dark;
 }
 
 /* Text meant only for screen readers. */

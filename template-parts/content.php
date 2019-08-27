@@ -7,10 +7,23 @@
  * @since      1.0.0
  */
 
-$title = sprintf(
-	'<h1 class="entry-title">%1s</h1>',
-	get_the_title()
-);
+/**
+ * Conditional title element.
+ */
+
+// If a single page.
+if ( is_singular() ) {
+	$title = sprintf(
+		'<h1 class="entry-title">%1s</h1>',
+		get_the_title()
+	);
+} else {
+	$title = sprintf(
+		'<h2 class="entry-title"><a href="%1s">%2s</a></h2>',
+		esc_url( get_permalink() ),
+		get_the_title()
+	);
+}
 
 ?>
 
@@ -20,7 +33,9 @@ $title = sprintf(
 
 		<?php if ( is_singular( [ 'post', 'recipe' ] ) ) : ?>
 			<div class="entry-meta">
-				<?php Mixes\Tags\posted_on(); ?>
+				<?php if ( is_singular( 'post' ) ) {
+					Mixes\Tags\posted_on();
+				} ?>
 			</div>
 		<?php endif; ?>
 	</header>

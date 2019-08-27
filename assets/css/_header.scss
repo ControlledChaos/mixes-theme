@@ -1,6 +1,10 @@
 /**
  * Header
  */
+.site-header {
+	padding: 0 $px20;
+}
+
 .site-branding {
 	display: -webkit-box;
 	display: -moz-box;
@@ -9,17 +13,20 @@
 	-webkit-box-align: first baseline;
 	   -moz-box-align: first baseline;
 	    -ms-flex-align: first baseline;
-	        align-items: first baseline;
+			align-items: first baseline;
+	flex-direction: column;
+	justify-content: center;
 	width: 100%;
 }
 
 .site-title {
-
-	margin: 0;
+	width: 100%;
+	margin-top: $px16;
 	font-family: $headings;
-	font-size: $px47;
+	font-size: 10vw;
 	font-weight: bold;
 	line-height: 1;
+	text-align: center;
 	text-transform: uppercase;
 
 	& a {
@@ -28,31 +35,37 @@
 
 	.title-span-one {
 		font-weight: 400;
-		color: $gray;
+		color: $theme_color;
 		letter-spacing: -0.003em;
 	}
 
 	.title-span-two {
 		font-size: 1.03em;
 		font-weight: 600;
-		color: $light_gray;
+		color: $theme_light;
 	}
 }
 
 .site-description {
-	margin: 0.5em 0 0 0.5em;
-	font-size: $px19;
+	width: 100%;
+	margin: 0.5em 0 0 0;
+	font-size: $px21;
 	font-weight: 400;
 	font-style: italic;
 	line-height: 1.25;
-	color: $gray;
+	text-align: center;
+	color: $theme_color;
+}
+
+.logo-link {
+	display: inline-block;
+	margin: 0 auto;
 }
 
 .custom-logo {
 	display: block;
-	max-width: 60px;
+	max-width: 120px;
 	height: auto;
-	margin-right: 0.325rem;
 }
 
 body {
@@ -119,6 +132,7 @@ body {
 				h1,
 				h2 {
 					font-size: $px37;
+					line-height: 1.2;
 					letter-spacing: 0.03em;
 					color: $white;
 					text-shadow: 0.05em 0.05em 0.05em rgba(0,0,0,0.7);
@@ -131,5 +145,34 @@ body {
 				}
 			}
 		}
+	}
+}
+
+@media screen and (min-width: 37.5em) {
+
+	.site-branding {
+		flex-direction: row;
+		justify-content: flex-start;
+		margin: 0;
+	}
+
+	.site-title {
+		margin-top: 0;
+		font-size: $px52;
+		text-align: left;
+	}
+
+	.site-description {
+		margin: 0.5em 0 0 0.5em;
+		font-size: $px19;
+		text-align: left;
+	}
+
+	.logo-link {
+		margin: 0;
+	}
+
+	.custom-logo {
+		max-height: 80px;
 	}
 }

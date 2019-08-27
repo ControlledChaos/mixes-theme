@@ -12,6 +12,8 @@
  * Some variables use colors set by args in the functions file.
  *
  * @see functions.php/setup
+ *
+ * Theme color options: #54545a, #6f6d72, #93939a, #c1bfc3
  */
 /**
  * Font sizes
@@ -27,6 +29,7 @@
 body {
   background: #fff;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  font-size: 1.125rem;
   line-height: 1.5;
   color: #333333;
 }
@@ -59,13 +62,13 @@ h1 a,
 h2 a,
 h3 a {
   text-decoration: none;
-  color: #777777;
+  color: #6f6d72;
 }
 
 h1 a:visited,
 h2 a:visited,
 h3 a:visited {
-  color: #777777;
+  color: #6f6d72;
 }
 
 h1 a:hover, h1 a:focus,
@@ -73,7 +76,7 @@ h2 a:hover,
 h2 a:focus,
 h3 a:hover,
 h3 a:focus {
-  color: #0088aa;
+  color: #5876a8;
 }
 
 h1,
@@ -81,7 +84,7 @@ h2 {
   font-size: 2rem;
   font-weight: 500;
   text-transform: uppercase;
-  color: #777777;
+  color: #6f6d72;
 }
 
 h1.page-title,
@@ -90,26 +93,40 @@ h2.page-title {
   text-transform: none;
 }
 
+h1.page-title a,
+h2.page-title a {
+  display: inline-block;
+  line-height: 1;
+  border-bottom: dotted 2px #93939a;
+}
+
 h3 {
   font-size: 1.3125rem;
   font-weight: 500;
-  color: #555555;
+  color: #54545a;
+}
+
+h4 {
+  font-size: 1.3125rem;
+  font-weight: 600;
+  color: #54545a;
 }
 
 a,
 .taxonomy-heading-links a {
-  color: #0088aa;
+  color: #5876a8;
+  text-decoration: none;
 }
 
 a:visited,
 .taxonomy-heading-links a:visited {
-  color: #0088aa;
+  color: #5876a8;
 }
 
 a:hover, a:focus,
 .taxonomy-heading-links a:hover,
 .taxonomy-heading-links a:focus {
-  color: #7752ad;
+  color: #7093c2;
 }
 
 .entry-content ul,
@@ -121,7 +138,7 @@ a:hover, a:focus,
 
 b,
 strong {
-  color: #555555;
+  color: #54545a;
 }
 
 /* Text meant only for screen readers. */
@@ -169,7 +186,7 @@ strong {
  */
 #wpadminbar {
   color: #ffffff;
-  background: #777777;
+  background: #6f6d72;
 }
 
 #wpadminbar .ab-item,
@@ -189,7 +206,7 @@ strong {
 #wpadminbar.nojs .ab-top-menu > li.menupop:hover > .ab-item,
 #wpadminbar .ab-top-menu > li.menupop.hover > .ab-item {
   color: #ffffff;
-  background: #999999;
+  background: #93939a;
 }
 
 #wpadminbar:not(.mobile) > #wp-toolbar li:hover span.ab-label,
@@ -207,12 +224,12 @@ strong {
 
 /* Admin Bar: submenu */
 #wpadminbar .menupop .ab-sub-wrapper {
-  background: #777777;
+  background: #6f6d72;
 }
 
 #wpadminbar .quicklinks .menupop ul.ab-sub-secondary,
 #wpadminbar .quicklinks .menupop ul.ab-sub-secondary .ab-submenu {
-  background: #999999;
+  background: #93939a;
 }
 
 #wpadminbar .ab-submenu .ab-item,
@@ -245,7 +262,7 @@ strong {
 #wpadminbar li.hover .ab-item:before,
 #wpadminbar li:hover #adminbarsearch:before,
 #wpadminbar li #adminbarsearch.adminbar-focused:before {
-  background: #999999;
+  background: #93939a;
   color: #ffffff;
 }
 
@@ -269,14 +286,14 @@ strong {
 }
 
 #wpadminbar > #wp-toolbar > #wp-admin-bar-top-secondary > #wp-admin-bar-search #adminbarsearch input.adminbar-input:focus {
-  color: #777777;
+  color: #6f6d72;
   background: #eee;
 }
 
 /* Admin Bar: my account */
 #wpadminbar .quicklinks li#wp-admin-bar-my-account.with-avatar > a img {
   border: none;
-  background-color: #777777;
+  background-color: #6f6d72;
 }
 
 #wpadminbar #wp-admin-bar-user-info .display-name {
@@ -294,6 +311,10 @@ strong {
 /**
  * Header
  */
+.site-header {
+  padding: 0 1.25rem;
+}
+
 .site-branding {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -301,15 +322,24 @@ strong {
   -webkit-box-align: first baseline;
   -ms-flex-align: first baseline;
   align-items: first baseline;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 100%;
 }
 
 .site-title {
-  margin: 0;
+  width: 100%;
+  margin-top: 1rem;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  font-size: 2.9375rem;
+  font-size: 10vw;
   font-weight: bold;
   line-height: 1;
+  text-align: center;
   text-transform: uppercase;
 }
 
@@ -319,30 +349,36 @@ strong {
 
 .site-title .title-span-one {
   font-weight: 400;
-  color: #777777;
+  color: #6f6d72;
   letter-spacing: -0.003em;
 }
 
 .site-title .title-span-two {
   font-size: 1.03em;
   font-weight: 600;
-  color: #999999;
+  color: #93939a;
 }
 
 .site-description {
-  margin: 0.5em 0 0 0.5em;
-  font-size: 1.1875rem;
+  width: 100%;
+  margin: 0.5em 0 0 0;
+  font-size: 1.3125rem;
   font-weight: 400;
   font-style: italic;
   line-height: 1.25;
-  color: #777777;
+  text-align: center;
+  color: #6f6d72;
+}
+
+.logo-link {
+  display: inline-block;
+  margin: 0 auto;
 }
 
 .custom-logo {
   display: block;
-  max-width: 60px;
+  max-width: 120px;
   height: auto;
-  margin-right: 0.325rem;
 }
 
 body .site-header-image {
@@ -405,6 +441,7 @@ body .site-header-image figure figcaption .hero-header {
 body .site-header-image figure figcaption h1,
 body .site-header-image figure figcaption h2 {
   font-size: 2.3125rem;
+  line-height: 1.2;
   letter-spacing: 0.03em;
   color: #ffffff;
   text-shadow: 0.05em 0.05em 0.05em rgba(0, 0, 0, 0.7);
@@ -414,6 +451,35 @@ body .site-header-image figure figcaption p {
   font-size: 1.1875rem;
   font-weight: 600;
   text-shadow: 0.05em 0.05em 0.05em rgba(0, 0, 0, 0.7);
+}
+
+@media screen and (min-width: 37.5em) {
+  .site-branding {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    margin: 0;
+  }
+  .site-title {
+    margin-top: 0;
+    font-size: 3.25rem;
+    text-align: left;
+  }
+  .site-description {
+    margin: 0.5em 0 0 0.5em;
+    font-size: 1.1875rem;
+    text-align: left;
+  }
+  .logo-link {
+    margin: 0;
+  }
+  .custom-logo {
+    max-height: 80px;
+  }
 }
 
 body {
@@ -437,7 +503,7 @@ body {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.0475em;
-  color: #777777;
+  color: #6f6d72;
 }
 
 .welcome-panel h2 {
@@ -473,13 +539,13 @@ button,
 input {
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
-  color: #777777;
+  color: #6f6d72;
 }
 
 a:visited,
 button:visited,
 input:visited {
-  color: #777777;
+  color: #6f6d72;
 }
 
 /**
@@ -506,7 +572,7 @@ input:visited {
 .admin-navigation-list li a {
   display: inline-block;
   position: relative;
-  color: #777777;
+  color: #6f6d72;
   text-decoration: none;
   cursor: pointer;
   -webkit-transform: scale(1);
@@ -523,7 +589,7 @@ input:visited {
   height: 2px;
   bottom: -0.5em;
   left: 0;
-  background: #777777;
+  background: #6f6d72;
   visibility: hidden;
   -webkit-transform: scaleX(0);
   transform: scaleX(0);
@@ -546,32 +612,32 @@ input:visited {
 
 /* Links */
 a {
-  color: #777777;
+  color: #6f6d72;
 }
 
 a:hover, a:active, a:focus {
-  color: #777777;
+  color: #6f6d72;
 }
 
 #media-upload a.del-link:hover,
 div.dashboard-widget-submit input:hover,
 .subsubsub a:hover,
 .subsubsub a.current:hover {
-  color: #777777;
+  color: #6f6d72;
 }
 
 /* Forms */
 input[type=checkbox]:checked:before {
-  color: #777777;
+  color: #6f6d72;
 }
 
 input[type=radio]:checked:before {
-  background: #999999;
+  background: #93939a;
 }
 
 .wp-core-ui input[type="reset"]:hover,
 .wp-core-ui input[type="reset"]:active {
-  color: #999999;
+  color: #93939a;
 }
 
 /* Core UI */
@@ -581,13 +647,13 @@ input[type=radio]:checked:before {
 
 .wp-core-ui .button-link:hover,
 .wp-core-ui .button-link:focus {
-  color: #777777;
+  color: #6f6d72;
 }
 
 .wp-core-ui .button-primary,
 .wp-core-ui .button {
   height: auto;
-  background: #777777;
+  background: #6f6d72;
   border: none;
   color: #fff;
   -webkit-box-shadow: none;
@@ -640,7 +706,7 @@ input[type=radio]:checked:before {
 .wp-core-ui .button-primary:disabled,
 .wp-core-ui .button-primary.button-primary-disabled,
 .wp-core-ui .button-primary.disabled {
-  color: #999999 !important;
+  color: #93939a !important;
   background: #ccc !important;
   border: none;
   text-shadow: none !important;
@@ -667,11 +733,11 @@ input[type=radio]:checked:before {
 
 .wp-core-ui .wp-ui-highlight {
   color: #fff;
-  background-color: #777777;
+  background-color: #6f6d72;
 }
 
 .wp-core-ui .wp-ui-text-highlight {
-  color: #777777;
+  color: #6f6d72;
 }
 
 .wp-core-ui .wp-ui-notification {
@@ -694,7 +760,7 @@ form h2 {
   font-weight: normal;
   font-weight: 500;
   letter-spacing: 0.05em;
-  color: #777777;
+  color: #6f6d72;
 }
 
 /* List tables */
@@ -708,14 +774,14 @@ form h2 {
   border: none !important;
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
-  color: #777777;
+  color: #6f6d72;
 }
 
 .wrap .add-new-h2:hover,
 .wrap .page-title-action:hover,
 .tablenav .tablenav-pages a:hover,
 .tablenav .tablenav-pages a:focus {
-  color: #777777;
+  color: #6f6d72;
   background-color: #eee;
 }
 
@@ -724,13 +790,13 @@ form h2 {
 }
 
 .view-switch a:hover:before {
-  color: #777777;
+  color: #6f6d72;
 }
 
 #titlediv {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: 400;
-  color: #777777;
+  color: #6f6d72;
 }
 
 #titlediv #title-prompt-text {
@@ -754,7 +820,7 @@ form h2 {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: normal;
   font-weight: 500;
-  color: #777777;
+  color: #6f6d72;
 }
 
 #adminmenu .wp-submenu-head,
@@ -768,7 +834,6 @@ body:not(.folded) #adminmenu a {
 }
 
 #adminmenu a.menu-top {
-  font-size: 1.075em;
   text-transform: uppercase;
 }
 
@@ -777,14 +842,14 @@ body:not(.folded) .wp-menu-image {
 }
 
 #adminmenu div.wp-menu-image:before {
-  color: #777777;
+  color: #6f6d72;
 }
 
 #adminmenu a:hover,
 #adminmenu li.menu-top:hover,
 #adminmenu li.opensub > a.menu-top,
 #adminmenu li > a.menu-top:focus {
-  color: #777777;
+  color: #6f6d72;
   background-color: #ccc;
 }
 
@@ -829,7 +894,7 @@ body:not(.folded) .wp-menu-image {
 }
 
 #adminmenu .wp-submenu .wp-submenu-head {
-  color: #777777;
+  color: #6f6d72;
 }
 
 #adminmenu .wp-submenu a,
@@ -837,7 +902,7 @@ body:not(.folded) .wp-menu-image {
 .folded #adminmenu .wp-has-current-submenu .wp-submenu a,
 #adminmenu a.wp-has-current-submenu:focus + .wp-submenu a,
 #adminmenu .wp-has-current-submenu.opensub .wp-submenu a {
-  color: #777777;
+  color: #6f6d72;
 }
 
 #adminmenu .wp-submenu a:focus, #adminmenu .wp-submenu a:hover,
@@ -850,14 +915,14 @@ body:not(.folded) .wp-menu-image {
 #adminmenu .wp-has-current-submenu.opensub .wp-submenu a:focus,
 #adminmenu .wp-has-current-submenu.opensub .wp-submenu a:hover {
   background: #ddd;
-  color: #777777;
+  color: #6f6d72;
 }
 
 /* Admin Menu: current */
 #adminmenu .wp-submenu li.current a,
 #adminmenu a.wp-has-current-submenu:focus + .wp-submenu li.current a,
 #adminmenu .wp-has-current-submenu.opensub .wp-submenu li.current a {
-  color: #777777;
+  color: #6f6d72;
 }
 
 #adminmenu .wp-submenu li.current a:hover, #adminmenu .wp-submenu li.current a:focus,
@@ -865,7 +930,7 @@ body:not(.folded) .wp-menu-image {
 #adminmenu a.wp-has-current-submenu:focus + .wp-submenu li.current a:focus,
 #adminmenu .wp-has-current-submenu.opensub .wp-submenu li.current a:hover,
 #adminmenu .wp-has-current-submenu.opensub .wp-submenu li.current a:focus {
-  color: #777777;
+  color: #6f6d72;
 }
 
 ul#adminmenu a.wp-has-current-submenu:after,
@@ -878,7 +943,7 @@ ul#adminmenu > li.current > a.current:after {
 #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu,
 #adminmenu li.wp-has-current-submenu .wp-submenu .wp-submenu-head,
 .folded #adminmenu li.current.menu-top {
-  color: #777777;
+  color: #6f6d72;
   background: #ccc;
 }
 
@@ -908,7 +973,9 @@ ul#adminmenu > li.current > a.current:after {
 #collapse-button,
 #collapse-button:hover,
 #collapse-button:focus {
-  color: #777777;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 0.8125rem;
+  color: #6f6d72;
 }
 
 /**
@@ -928,7 +995,7 @@ ul#adminmenu > li.current > a.current:after {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: normal;
   font-weight: 600;
-  color: #777777;
+  color: #6f6d72;
 }
 
 .welcome-panel h3,
@@ -952,55 +1019,55 @@ ul#adminmenu > li.current > a.current:after {
 
 .mixes-dashboard-post-type-actions-icon .dashicons:before,
 .mixes-dashboard-content-actions-icon .dashicons:before {
-  color: #777777;
+  color: #6f6d72;
 }
 
 /* Pointers */
 .wp-pointer .wp-pointer-content h3 {
-  background-color: #777777;
-  border-color: #777777;
+  background-color: #6f6d72;
+  border-color: #6f6d72;
 }
 
 .wp-pointer .wp-pointer-content h3:before {
-  color: #777777;
+  color: #6f6d72;
 }
 
 .wp-pointer.wp-pointer-top .wp-pointer-arrow,
 .wp-pointer.wp-pointer-top .wp-pointer-arrow-inner,
 .wp-pointer.wp-pointer-undefined .wp-pointer-arrow,
 .wp-pointer.wp-pointer-undefined .wp-pointer-arrow-inner {
-  border-bottom-color: #777777;
+  border-bottom-color: #6f6d72;
 }
 
 /* Media */
 .media-item .bar,
 .media-progress-bar div,
 .wp-core-ui .attachment.details .check, .wp-core-ui .attachment.selected .check:focus, .wp-core-ui .media-frame.mode-grid .attachment.selected .check {
-  background-color: #777777;
+  background-color: #6f6d72;
 }
 
 .details.attachment {
-  -webkit-box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 7px #777777;
-          box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 7px #777777;
+  -webkit-box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 7px #6f6d72;
+          box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 7px #6f6d72;
 }
 
 .attachment.details .check {
-  background-color: #777777;
-  -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px #777777;
-          box-shadow: 0 0 0 1px #fff, 0 0 0 2px #777777;
+  background-color: #6f6d72;
+  -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px #6f6d72;
+          box-shadow: 0 0 0 1px #fff, 0 0 0 2px #6f6d72;
 }
 
 .media-selection .attachment.selection.details .thumbnail,
 .media-frame.mode-grid .attachment.details {
-  -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 3px #777777;
-          box-shadow: 0 0 0 1px #fff, 0 0 0 3px #777777;
+  -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 3px #6f6d72;
+          box-shadow: 0 0 0 1px #fff, 0 0 0 3px #6f6d72;
 }
 
 .media-frame.mode-grid .attachment.details:focus,
 .media-frame.mode-grid .attachment:focus,
 .media-frame.mode-grid .selected.attachment:focus {
-  -webkit-box-shadow: inset 0 0 2px 3px #fff, inset 0 0 0 7px #777777;
-          box-shadow: inset 0 0 2px 3px #fff, inset 0 0 0 7px #777777;
+  -webkit-box-shadow: inset 0 0 2px 3px #fff, inset 0 0 0 7px #6f6d72;
+          box-shadow: inset 0 0 2px 3px #fff, inset 0 0 0 7px #6f6d72;
   outline: 0;
 }
 
@@ -1008,12 +1075,12 @@ ul#adminmenu > li.current > a.current:after {
 .theme-browser .theme.active .theme-name,
 .theme-browser .theme.add-new-theme a:hover:after,
 .theme-browser .theme.add-new-theme a:focus:after {
-  background: #777777;
+  background: #6f6d72;
 }
 
 .theme-browser .theme.add-new-theme a:hover span:after,
 .theme-browser .theme.add-new-theme a:focus span:after {
-  color: #777777;
+  color: #6f6d72;
 }
 
 .theme-browser .theme.active .theme-actions {
@@ -1029,11 +1096,11 @@ ul#adminmenu > li.current > a.current:after {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #777777;
+  color: #6f6d72;
 }
 
 .theme-overlay .theme-name {
-  color: #777777;
+  color: #6f6d72;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-size: 28px;
   font-weight: normal;
@@ -1042,7 +1109,7 @@ ul#adminmenu > li.current > a.current:after {
 }
 
 .theme-browser .theme .more-details {
-  background: #777777;
+  background: #6f6d72;
   text-shadow: none;
 }
 
@@ -1050,7 +1117,7 @@ ul#adminmenu > li.current > a.current:after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   margin: 0;
-  background: #999999;
+  background: #93939a;
   color: #fff;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-size: 11px;
@@ -1064,7 +1131,7 @@ ul#adminmenu > li.current > a.current:after {
 .theme-overlay .parent-theme {
   background: #fff;
   border: 1px solid #ccc;
-  border-left: 4px solid #777777;
+  border-left: 4px solid #6f6d72;
 }
 
 .theme-section.current,
@@ -1083,7 +1150,7 @@ body.more-filters-opened .more-filters:before {
 
 body.more-filters-opened .more-filters:hover,
 body.more-filters-opened .more-filters:focus {
-  background-color: #777777;
+  background-color: #6f6d72;
   color: #fff;
 }
 
@@ -1102,11 +1169,11 @@ div#widgets-right .sidebar-name h3 {
   font-weight: normal;
   font-weight: 500;
   letter-spacing: 0.05em;
-  color: #777777;
+  color: #6f6d72;
 }
 
 .widgets-chooser li.widgets-chooser-selected {
-  background-color: #777777;
+  background-color: #6f6d72;
   color: #fff;
 }
 
@@ -1122,7 +1189,7 @@ div#widgets-right .sidebar-name h3 {
 
 .plugin-update-tr.active td,
 .plugins .active th.check-column {
-  border-left-color: #777777;
+  border-left-color: #6f6d72;
 }
 
 /* Responsive Component */
@@ -1132,7 +1199,7 @@ div#wp-responsive-toggle a:before {
 
 .wp-responsive-open div#wp-responsive-toggle a {
   border-color: transparent;
-  background: #777777;
+  background: #6f6d72;
 }
 
 .wp-responsive-open #wpadminbar #wp-admin-bar-menu-toggle a {
@@ -1149,7 +1216,7 @@ div#wp-responsive-toggle a:before {
 .mce-container.mce-menu .mce-menu-item:focus,
 .mce-container.mce-menu .mce-menu-item-normal.mce-active,
 .mce-container.mce-menu .mce-menu-item-preview.mce-active {
-  background: #777777;
+  background: #6f6d72;
 }
 
 #post-body #visibility::before, #post-body .misc-pub-post-status::before, #post-body .misc-pub-revisions::before, .curtime #timestamp::before, span.wp-media-buttons-icon::before {

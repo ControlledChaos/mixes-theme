@@ -64,21 +64,21 @@ input[type="button"],
 input[type="reset"],
 input[type="image"] {
 	width: auto;
-	padding: 1em 1em 0.75em;
+	padding: 0.775em 1em 0.68em;
 	cursor: pointer;
 	font-family: $headings;
-	font-size: $px18;
+	font-size: 1em;
 	font-weight: 700;
 	line-height: 1;
 	text-transform: uppercase;
-	background: $gray;
+	background: $theme_color;
 	color: $white;
-	border: solid 1px $gray;
+	border: solid 1px $theme_color;
 
 	&:hover,
 	&:focus {
-		background: $light_gray;
-		border-color: $light_gray;
+		background: $theme_light;
+		border-color: $theme_light;
 	}
 
 	svg {

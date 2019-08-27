@@ -604,16 +604,93 @@ final class Functions {
 	}
 
 	/**
-	 * Remove prepend text from archive titles
+	 * Filter archive titles
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @return string Returns the ammended title.
+	 * @return string Returns the filtered titles.
 	 */
 	public function archive_title( $title ) {
 
+		// $queried_object = get_queried_object();
+		// $this_tax = get_taxonomy( $queried_object->taxonomy );
+		// echo $this_tax->labels->singular_name;
+
+		// Get query vars for search & filter pages.
+		$term     = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+		$liquor   = get_query_var( 'liquor_type', '' );
+		$occasion = get_query_var( 'recipe_occasion', '' );
+
+		if ( is_tax( 'recipe_type', 'cocktail' ) && $liquor ) {
+			$recipes = sprintf(
+				'<a href="%1s">%2s</a> %3s',
+				esc_url( get_term_link( $liquor, 'liquor_type' ) ),
+				$liquor,
+				__( 'recipes', 'mixes-theme' )
+			);
+		} elseif ( is_tax( 'recipe_type', 'cocktail' ) ) {
+			$recipes = __( 'cocktail recipes', 'mixes-theme' );
+		}
+
+		// If a cocktail URL with liquor & occasion parameters.
+		if ( is_tax( 'recipe_type', 'cocktail' ) && $liquor && $occasion ) {
+			$title = sprintf(
+				'%1s %2s %4s <a href="%5s">%6s</a>',
+				__( 'The following', 'mixes-theme' ),
+				$recipes,
+				__( 'are labeled for', 'mixes-theme' ),
+				esc_url( get_term_link( $occasion, 'recipe_occasion' ) ),
+				$occasion
+			);
+
+		// If a cocktail URL with liquor a parameter.
+		} elseif ( is_tax( 'recipe_type', 'cocktail' ) && $liquor ) {
+			$title = sprintf(
+				'%1s <a href="%2s">%3s</a> %4s',
+				__( 'The following are', 'mixes-theme' ),
+				esc_url( get_term_link( $liquor, 'liquor_type' ) ),
+				$liquor,
+				__( 'recipes', 'mixes-theme' )
+			);
+
+		// If a cocktail URL with occasion a parameter.
+		} elseif ( is_tax( 'recipe_type', 'cocktail' ) && $occasion ) {
+			$title = sprintf(
+				'%1s %2s %3s <a href="%4s">%5s</a>',
+				__( 'The following', 'mixes-theme' ),
+				$recipes,
+				__( 'are labeled for', 'mixes-theme' ),
+				esc_url( get_term_link( $occasion, 'recipe_occasion' ) ),
+				$occasion
+			);
+
+		// If a recipe URL with occasion a parameter.
+		} elseif ( ( is_tax( 'recipe_type' ) && $occasion ) || is_tax( 'recipe_occasion' ) ) {
+			$title = sprintf(
+				'%1s <a href="%2s">%3s</a>',
+				esc_html__( 'The following recipes are labeled for', 'mixes-theme' ),
+				esc_url( get_term_link( $occasion, 'recipe_occasion' ) ),
+				$occasion
+			);
+
+		// If a recipe URL with occasion a parameter.
+		} elseif ( is_tax( 'liquor_type' ) ) {
+			$title = sprintf(
+				'%1s %2s',
+				esc_html__( 'The following recipes contain', 'mixes-theme' ),
+				single_term_title( '', false )
+			);
+
+		// If a cocktail archive.
+		} elseif ( is_tax( 'recipe_type' ) ) {
+		$title = single_term_title( '', false ) . __( ' Recipes', 'mixes-theme' );
+
+		// If is taxonomy archive.
+		} elseif ( is_tax() ) {
+			$title = single_cat_title( '', false );
+
 		// If is standard category archive.
-		if ( is_category() ) {
+		} elseif ( is_category() ) {
 			$title = single_cat_title( '', false );
 
 		// If is standard tag archive.
