@@ -7,7 +7,7 @@
 
 .post,
 .page {
-	margin: 0 0 1.5em;
+	margin: 0;
 }
 
 .updated:not(.published) {
@@ -18,6 +18,12 @@
 .entry-content,
 .entry-summary {
 	margin: 1.5em 0 0;
+}
+
+.blog .site-main article:not(:first-of-type),
+.archive:not(.post-type-archive) .site-main article:not(:first-of-type) {
+	margin-top: $px48;
+	border-top: solid 1px $theme_pale;
 }
 
 .entry-title {
@@ -34,6 +40,10 @@
 	margin-top: $px16;
 	text-align: center;
 	line-height: 1;
+}
+
+.entry-content ~ .entry-footer {
+	margin-top: $px30;
 }
 
 .entry-meta {
@@ -60,25 +70,47 @@
 }
 
 /**
+ * Recipe pages
+ */
+.recipe-archive-content {
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+.recipe-video {
+	margin-top: $px30;
+	margin-bottom: $px52;
+
+	iframe {
+		margin-top: $px20;
+	}
+}
+
+.recipe-gallery {
+	margin-top: $px30;
+}
+
+/**
  * Content Grids
  */
 .posts-grid {
 
 	ul {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		grid-gap: 0.5em 0.5em;
+		grid-template-columns: repeat(1, 1fr);
+		grid-gap:$px30 0;
 		padding-left: 0;
 		list-style: none;
 
 		li {
 
 			a {
-				display: block;
 				text-decoration: none;
 			}
 
 			h3 {
+				margin-top: 0.625em;
+				line-height: 1.3;
 				color: $text;
 
 				&:hover,
@@ -90,13 +122,17 @@
 
 		figure {
 
+			a {
+				display: block;
+			}
+
 			img {
 				display: block;
 			}
 		}
 
 		.posts-grid-summary {
-			margin-top: 0.5;
+			margin-top: 0.25rem;
 			line-height: 1.25;
 			font-size: $px17;
 		}
@@ -122,12 +158,28 @@
 	}
 }
 
-@media screen and (min-width: 37.5em) {
+@media screen and (min-width: 769px) {
 
 	.entry-title,
 	.entry-meta,
 	.entry-footer {
 		text-align: left;
+	}
+
+	.recipe-archive-content {
+		flex-direction: column;
+	}
+
+	.posts-grid {
+
+		&.recipe-archive-grid {
+			margin-top: $px40;
+		}
+
+		ul {
+			grid-template-columns: repeat(3, 1fr);
+			grid-gap: 1em 0.5em;
+		}
 	}
 
 }

@@ -110,21 +110,19 @@ if ( get_bloginfo( 'description' ) || is_customize_preview() ) {
 		wp_nav_menu( [
 			'theme_location' => 'main',
 			'menu_id'        => 'main-menu',
+			'container'      => false
 		] );
 		?>
 	</nav>
 	<header id="masthead" class="site-header" role="banner" itemscope="itemscope" itemtype="http://schema.org/Organization">
-		<div class="site-branding">
-			<?php Mixes\Includes\random_logo(); ?>
-			<?php echo $site_title; ?>
-		</div>
+		<?php get_template_part( 'template-parts/site-branding' ); ?>
 		<?php echo $site_description; ?>
 		<?php
 		if ( is_front_page() ) {
 			get_template_part( 'template-parts/hero', 'front' );
-		} elseif ( is_singular( 'recipe' ) && has_post_thumbnail() ) {
+		} elseif ( is_singular( 'recipe' ) ) {
 			get_template_part( 'template-parts/hero', 'recipe' );
-		} elseif ( is_page() && has_header_image() ) {
+		} else {
 			get_template_part( 'template-parts/hero' );
 		} ?>
 	</header>

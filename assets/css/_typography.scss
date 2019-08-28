@@ -78,6 +78,13 @@ h4 {
 	color: $theme_dark;
 }
 
+.page-title {
+	font-family: $headings;
+	font-size: $px21;
+	font-weight: 500;
+	color: $theme_dark;
+}
+
 a,
 .taxonomy-heading-links a {
 	color: $link_primary;
@@ -93,7 +100,7 @@ a,
 	}
 }
 
-.entry-content ul,
+.entry-content ul:not(.gallery):not(.posts-grid-list),
 .sidebar-widgets ul,
 .entry-content ol,
 .sidebar-widgets ol {

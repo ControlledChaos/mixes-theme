@@ -17,14 +17,24 @@ get_header(); ?>
 			<header class="page-header">
 				<?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
 			</header>
+			<div class="recipe-archive-content">
+				<section class="recipe-search recipe-archive-search">
+					<?php if ( is_active_sidebar( 'recipe-search' ) ) {
+						dynamic_sidebar( 'recipe-search' );
+					} ?>
+				</section>
+				<section class="posts-grid recipe-archive-grid">
+					<ul class="posts-grid-list">
+					<?php while ( have_posts() ) : ?>
+						<?php the_post();
+						get_template_part( 'template-parts/content', 'recipe-archive' ); ?>
 
-			<?php while ( have_posts() ) :
-				the_post();
-				get_template_part( 'template-parts/content', get_post_type() );
+					<?php endwhile; ?>
+					</ul>
+				</section>
+			</div>
 
-			endwhile;
-
-			Mixes\Tags\posts_navigation();
+			<?php Mixes\Tags\posts_navigation();
 
 		else :
 
@@ -37,5 +47,5 @@ get_header(); ?>
 	</div>
 
 <?php
-get_sidebar();
+// get_sidebar();
 get_footer();

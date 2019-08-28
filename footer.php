@@ -19,14 +19,26 @@ $copyright = sprintf(
 	esc_html__( 'All rights reserved', 'mixes-theme' )
 ); ?>
 
-	</div>
+	</div><!-- #content -->
+</div><!-- #page -->
 
-	<footer id="colophon" class="site-footer">
-		<div class="footer-content global-wrapper footer-wrapper">
-				<?php echo $copyright; ?>
+<footer id="colophon" class="site-footer">
+	<div class="footer-menu">
+		<?php
+		wp_nav_menu( [
+			'theme_location' => 'footer',
+			'menu_id'        => 'footer-menu',
+			'menu_class'     => 'footer-wrapper',
+			'fallback_cb'    => null
+		] );
+		?>
+	</div>
+	<div class="footer-copyright">
+		<div class="footer-wrapper">
+			<?php echo $copyright; ?>
 		</div>
-	</footer>
-</div>
+	</div>
+</footer>
 
 <?php wp_footer(); ?>
 

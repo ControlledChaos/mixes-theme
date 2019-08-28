@@ -93,7 +93,7 @@ figure.alignright {
 
 /* Small menu. */
 
-@media screen and (min-width: 37.5em) {
+@media screen and (min-width: 769px) {
 
 	.main-navigation div > ul > li {
 		margin: 0 0 0 1em;

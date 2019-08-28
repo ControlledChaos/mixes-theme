@@ -57,7 +57,7 @@ input[type="checkbox"] {
 	cursor: pointer;
 }
 
-button:not(.menu-toggle),
+button:not(.menu-toggle):not(.fancybox-button),
 button[type="submit"],
 input[type="submit"],
 input[type="button"],

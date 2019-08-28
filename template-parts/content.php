@@ -31,7 +31,7 @@ if ( is_singular() ) {
 	<header class="entry-header">
 		<?php echo $title; ?>
 
-		<?php if ( is_singular( [ 'post', 'recipe' ] ) ) : ?>
+		<?php if ( is_singular( [ 'post' ] ) ) : ?>
 			<div class="entry-meta">
 				<?php if ( is_singular( 'post' ) ) {
 					Mixes\Tags\posted_on();

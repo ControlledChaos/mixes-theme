@@ -19,17 +19,18 @@ get_header(); ?>
 				<header>
 					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
 				</header>
-				<?php
-			endif;
+			<?php endif; ?>
+			<section class="posts-grid posts-index-grid">
+				<ul class="posts-grid-list">
+				<?php while ( have_posts() ) : ?>
+					<?php the_post();
+					get_template_part( 'template-parts/content', 'index' ); ?>
 
-			while ( have_posts() ) :
-				the_post();
+				<?php endwhile; ?>
+				</ul>
+			</section>
 
-				get_template_part( 'template-parts/content', get_post_type() );
-
-			endwhile;
-
-			Mixes\Tags\posts_navigation();
+			<?php Mixes\Tags\posts_navigation();
 
 		else :
 
@@ -41,5 +42,5 @@ get_header(); ?>
 	</div>
 
 <?php
-get_sidebar();
+// get_sidebar();
 get_footer();

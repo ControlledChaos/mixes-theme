@@ -162,7 +162,7 @@ function posted_on() {
 	$posted_on = sprintf(
 		/* translators: %s: post date. */
 		esc_html_x( '%s', 'post date', 'mixes-theme' ),
-		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+		'<a href="' . esc_url( get_month_link( get_post_time( 'Y' ), get_post_time( 'm' ) ) ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 
 	echo '<span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
@@ -281,7 +281,8 @@ function post_thumbnail() {
 
 	<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
 		<?php
-		the_post_thumbnail( 'post-thumbnail', [
+		the_post_thumbnail( 'archive-pages', [
+			'class' => 'excerpt-thumbnail alignright',
 			'alt' => the_title_attribute( [
 				'echo' => false,
 			] ),
@@ -302,18 +303,63 @@ function post_thumbnail() {
  */
 function posts_navigation() {
 
-	// Previous link.
-	$prev_text = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="theme-icon menu-prev"><path d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"/></svg>';
-	$prev_text .= __( 'Back', 'mixes-theme' );
+	// Nav text for recipes.
+	if ( is_post_type_archive( 'recipe' ) ) {
+		$prev_text = __( 'Previous Recipes', 'mixes-theme' );
+		$next_text = __( 'Next Recipes', 'mixes-theme' );
 
-	// Next link.
-	$next_text = __( 'Onward', 'mixes-theme' );
-	$next_text .= '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="theme-icon menu-next"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>';
+	// Nav text for posts.
+	} else {
+		$prev_text = __( 'Older Posts', 'mixes-theme' );
+		$next_text = __( 'Newer Posts', 'mixes-theme' );
+	}
+
+	// Previous icon.
+	$prev_icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="theme-icon menu-prev"><path d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"/></svg>';
+
+	// Next icon.
+	$next_icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="theme-icon menu-next"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>';
 
 	// Array to return.
 	$posts_navigation = the_posts_navigation( [
-		'prev_text' => $prev_text,
-		'next_text' => $next_text,
+		'prev_text' => $prev_icon . $prev_text,
+		'next_text' => $next_text . $next_icon
+	] );
+
+	return $posts_navigation;
+
+}
+
+/**
+ * Posts navigation for singular pages
+ *
+ * @since  1.0.0
+ * @access public
+ * @return string
+ */
+function post_navigation() {
+
+	// Nav text for recipes.
+	if ( is_post_type_archive( 'recipe' ) ) {
+		$prev_text = __( 'Previous Recipes', 'mixes-theme' );
+		$next_text = __( 'Next Recipes', 'mixes-theme' );
+
+	// Nav text for posts.
+	} else {
+		$prev_text = __( 'Older Posts', 'mixes-theme' );
+		$next_text = __( 'Newer Posts', 'mixes-theme' );
+	}
+
+	// Previous icon.
+	$prev_icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="theme-icon menu-prev"><path d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"/></svg>';
+
+	// Next icon.
+	$next_icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="theme-icon menu-next"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>';
+
+	// Array to return.
+	$posts_navigation = the_post_navigation( [
+		'prev_text' => $prev_icon . get_the_title(),
+		'next_text' => get_the_title() . $next_icon
 	] );
 
 	return $posts_navigation;

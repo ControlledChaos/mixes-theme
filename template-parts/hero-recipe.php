@@ -34,19 +34,17 @@ if ( class_exists( 'acf_pro' ) ) {
 } else {
 	$summary = null;
 }
-?>
 
+?>
 <div class="site-header-image" role="presentation">
 	<figure>
 		<?php
-		if ( is_singular( [ 'post', 'recipe' ] ) && has_post_thumbnail() ) {
+		if ( has_post_thumbnail() ) {
 			echo sprintf(
 				'<img src="%1s" alt="%2s" width="2048" height="1152" />',
 				esc_attr( esc_url( $src ) ),
 				get_the_title()
 			);
-		} elseif ( is_singular( [ 'post', 'recipe' ] ) ) {
-			echo '';
 		} elseif ( has_header_image() ) {
 			the_header_image_tag();
 		} else {

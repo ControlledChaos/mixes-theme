@@ -114,6 +114,12 @@ final class Functions {
 		// Remove the user admin color scheme picker.
 		remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
 
+		// Filter excerpt word count.
+		add_filter( 'excerpt_length', [ $this, 'excerpt_length' ], 999 );
+
+		// Filter the excerpt trailing markup.
+		add_filter( 'excerpt_more', [ $this, 'more_excerpt' ] );
+
 	}
 
 	/**
@@ -287,20 +293,21 @@ final class Functions {
 		 *
 		 * @since 1.0.0
 		 */
-		set_post_thumbnail_size( 2048, 1152, [ 'center', 'center' ] );
+		set_post_thumbnail_size( 1920, 1080, [ 'center', 'center' ] );
 
 		// Featured images, post thumbnail size.
-		add_image_size( __( 'featured-image', 'mixes-theme' ), 2048, 1152, true );
+		add_image_size( __( 'featured-image', 'mixes-theme' ), 1920, 1080, true );
+
+		// Feature images on index and archive pages.
+		add_image_size( __( 'archive-pages', 'mixes-theme' ), 640, 480, true );
+
+		// Gallery option for pages.
+		add_image_size( __( 'gallery-square', 'mixes-theme' ), 320, 320, true );
 
 		// 16:9 HD Video.
 		add_image_size( __( 'video', 'mixes-theme' ), 1280, 720, true );
 		add_image_size( __( 'video-md', 'mixes-theme' ), 960, 540, true );
 		add_image_size( __( 'video-sm', 'mixes-theme' ), 640, 360, true );
-
-		// 21:9 Cinemascope.
-		add_image_size( __( 'banner', 'mixes-theme' ), 1280, 549, true );
-		add_image_size( __( 'banner-md', 'mixes-theme' ), 960, 411, true );
-		add_image_size( __( 'banner-sm', 'mixes-theme' ), 640, 274, true );
 
 		/**
 		 * Custom header for the front page.
@@ -396,7 +403,7 @@ final class Functions {
 		 *
 		 * @since 1.0.0
 		 */
-		add_editor_style( '/assets/css/editor.min.css', [ 'mixes-admin' ], '', 'screen' );
+		add_editor_style( '/assets/css/editor.min.css', [], '', 'screen' );
 
 	}
 
@@ -413,9 +420,19 @@ final class Functions {
 			'name'          => esc_html__( 'Sidebar', 'mixes-theme' ),
 			'id'            => 'sidebar',
 			'description'   => esc_html__( 'Add widgets to the right sidebar.', 'mixes-theme' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'before_widget' => '<section id="%1$s" class="widget sidebar-widget %2$s">',
 			'after_widget'  => '</section>',
-			'before_title'  => '<h3 class="widget-title">',
+			'before_title'  => '<h3 class=" sidebar-widget-title">',
+			'after_title'   => '</h3>',
+		] );
+
+		register_sidebar( [
+			'name'          => esc_html__( 'Recipe Search Form', 'mixes-theme' ),
+			'id'            => 'recipe-search',
+			'description'   => esc_html__( 'The search form on recipe archive pages.', 'mixes-theme' ),
+			'before_widget' => '<section id="%1$s" class="widget recipe-search-widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h3 class="widget-title recipe-search-widget-title screen-reader-text">',
 			'after_title'   => '</h3>',
 		] );
 
@@ -425,8 +442,18 @@ final class Functions {
 			'description'   => esc_html__( 'Add widgets to the search page.', 'mixes-theme' ),
 			'before_widget' => '<section id="%1$s" class="widget search-page-widget %2$s">',
 			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
+			'before_title'  => '<h2 class="widget-title search-page-widget-title">',
 			'after_title'   => '</h2>',
+		] );
+
+		register_sidebar( [
+			'name'          => esc_html__( 'Footer', 'mixes-theme' ),
+			'id'            => 'footer',
+			'description'   => esc_html__( 'Add widgets to the page footer.', 'mixes-theme' ),
+			'before_widget' => '<section id="%1$s" class="widget footer-widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h4 class="widget-title footer-widget-title">',
+			'after_title'   => '</h4>',
 		] );
 
 	}
@@ -473,7 +500,7 @@ final class Functions {
 	 */
 	public function frontend_scripts() {
 
-		// wp_enqueue_script( 'jquery' );
+		wp_enqueue_script( 'jquery' );
 
 		wp_enqueue_script( 'test-navigation', get_theme_file_uri( '/assets/js/navigation.min.js' ), [], null, true );
 
@@ -568,7 +595,7 @@ final class Functions {
 			__( 'Set featured image' ),
 
 			// New text.
-			__( 'Minimum 2048px by 878px', 'mixes-theme' ),
+			__( 'Minimum 1920px by 1080px', 'mixes-theme' ),
 			$content
 		);
 
@@ -612,10 +639,6 @@ final class Functions {
 	 */
 	public function archive_title( $title ) {
 
-		// $queried_object = get_queried_object();
-		// $this_tax = get_taxonomy( $queried_object->taxonomy );
-		// echo $this_tax->labels->singular_name;
-
 		// Get query vars for search & filter pages.
 		$term     = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
 		$liquor   = get_query_var( 'liquor_type', '' );
@@ -623,53 +646,57 @@ final class Functions {
 
 		if ( is_tax( 'recipe_type', 'cocktail' ) && $liquor ) {
 			$recipes = sprintf(
-				'<a href="%1s">%2s</a> %3s',
-				esc_url( get_term_link( $liquor, 'liquor_type' ) ),
-				$liquor,
+				'%1s %2s',
+				ucfirst( $liquor ),
 				__( 'recipes', 'mixes-theme' )
 			);
 		} elseif ( is_tax( 'recipe_type', 'cocktail' ) ) {
-			$recipes = __( 'cocktail recipes', 'mixes-theme' );
+			$recipes = __( 'Cocktail recipes', 'mixes-theme' );
 		}
 
 		// If a cocktail URL with liquor & occasion parameters.
 		if ( is_tax( 'recipe_type', 'cocktail' ) && $liquor && $occasion ) {
 			$title = sprintf(
-				'%1s %2s %4s <a href="%5s">%6s</a>',
-				__( 'The following', 'mixes-theme' ),
-				$recipes,
-				__( 'are labeled for', 'mixes-theme' ),
-				esc_url( get_term_link( $occasion, 'recipe_occasion' ) ),
+				'%1s %2s %3s %4s',
+				ucfirst( $liquor ),
+				__( 'cocktails', 'mixes-theme' ),
+				__( 'for', 'mixes-theme' ),
+				$occasion
+			);
+
+		// If a recipe URL with liquor & occasion parameters.
+		} elseif ( is_tax( 'recipe_type' ) && $liquor && $occasion ) {
+			$title = sprintf(
+				'%1s %2s %3s %4s',
+				ucfirst( $liquor ),
+				__( 'recipes', 'mixes-theme' ),
+				__( 'for', 'mixes-theme' ),
 				$occasion
 			);
 
 		// If a cocktail URL with liquor a parameter.
 		} elseif ( is_tax( 'recipe_type', 'cocktail' ) && $liquor ) {
 			$title = sprintf(
-				'%1s <a href="%2s">%3s</a> %4s',
-				__( 'The following are', 'mixes-theme' ),
-				esc_url( get_term_link( $liquor, 'liquor_type' ) ),
-				$liquor,
-				__( 'recipes', 'mixes-theme' )
+				'%1s %2s %3s',
+				__( 'Cocktail recipes', 'mixes-theme' ),
+				__( 'containing', 'mixes-theme' ),
+				$liquor
 			);
 
 		// If a cocktail URL with occasion a parameter.
 		} elseif ( is_tax( 'recipe_type', 'cocktail' ) && $occasion ) {
 			$title = sprintf(
-				'%1s %2s %3s <a href="%4s">%5s</a>',
-				__( 'The following', 'mixes-theme' ),
-				$recipes,
-				__( 'are labeled for', 'mixes-theme' ),
-				esc_url( get_term_link( $occasion, 'recipe_occasion' ) ),
+				'%1s %2s %3s',
+				__( 'Cocktail recipes', 'mixes-theme' ),
+				__( 'for', 'mixes-theme' ),
 				$occasion
 			);
 
 		// If a recipe URL with occasion a parameter.
 		} elseif ( ( is_tax( 'recipe_type' ) && $occasion ) || is_tax( 'recipe_occasion' ) ) {
 			$title = sprintf(
-				'%1s <a href="%2s">%3s</a>',
-				esc_html__( 'The following recipes are labeled for', 'mixes-theme' ),
-				esc_url( get_term_link( $occasion, 'recipe_occasion' ) ),
+				'%1s %2s',
+				esc_html__( 'Recipes for', 'mixes-theme' ),
 				$occasion
 			);
 
@@ -677,7 +704,7 @@ final class Functions {
 		} elseif ( is_tax( 'liquor_type' ) ) {
 			$title = sprintf(
 				'%1s %2s',
-				esc_html__( 'The following recipes contain', 'mixes-theme' ),
+				esc_html__( 'Recipes containing', 'mixes-theme' ),
 				single_term_title( '', false )
 			);
 
@@ -712,6 +739,55 @@ final class Functions {
 		// Return the ammended title.
     	return $title;
 
+	}
+
+	/**
+	 * Filter excerpt word count
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return integer Returns the filtered number of words.
+	 */
+	public function excerpt_length( $length ) {
+		return 70;
+	}
+
+	/**
+	 * Filter the excerpt trailing markup
+	 *
+	 * Creates a "ead more" link to the post.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return string Returns the filtered markup.
+	 */
+	public function more_excerpt( $more ) {
+
+		// Right arrow icon.
+		$right = '<svg xmlns="http://www.w3.org/2000/svg" class="theme-icon read-more-icon" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>';
+
+		// Left arrow icon.
+		$left = '<svg xmlns="http://www.w3.org/2000/svg" class="theme-icon read-more-icon" viewBox="0 0 448 512"><path d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"/></svg>';
+
+		// If right-to-left language.
+		if ( is_rtl() ) {
+			$more = sprintf(
+				' <a class="read-more" href="%1s">%2s %3s</a> ',
+				get_permalink(),
+				$left,
+				__( 'Read more', 'mixes-theme' )
+			);
+		} else {
+			$more = sprintf(
+				'&hellip; <a class="read-more" href="%1s">%2s %3s</a>',
+				get_permalink(),
+				__( 'Read more', 'mixes-theme' ),
+				$right
+			);
+		}
+
+		// Return the filtered markup.
+		return $more;
 	}
 
 }

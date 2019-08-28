@@ -1,7 +1,7 @@
 /**
  * Navigation
  */
- .main-navigation {
+.main-navigation {
 	clear: both;
 	display: block;
 	width: 100%;
@@ -74,6 +74,7 @@
 		text-decoration: none;
 		color: $white;
 		-webkit-transition: color .15s;
+		-webkit-transition: all .15s;
 		transition: all .15s;
 
 		&:hover,
@@ -133,7 +134,87 @@
 	display: none;
 }
 
-@media screen and (min-width: 37.5em) {
+.comment-navigation,
+.posts-navigation,
+.post-navigation {
+	margin-top: 2em;
+	overflow: hidden;
+	font-size: $px19;
+	font-weight: bold;
+	font-weight: 500;
+}
+
+.nav-links {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	   -moz-box-orient: vertical;
+	   -moz-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-align: center;
+	   -moz-box-align: center;
+	    -ms-flex-align: center;
+			align-items: center;
+	font-family: $headings;
+
+	.nav-previous {
+
+		.theme-icon {
+			margin-right: 0.3em;
+		}
+	}
+
+	.nav-next {
+		text-align: right;
+
+		.theme-icon {
+			margin-left: 0.3em;
+		}
+	}
+
+	svg {
+		display: inline-block;
+		vertical-align: middle;
+		width: 1em;
+		height: 1em;
+		fill: currentColor;
+	}
+}
+
+.read-more {
+	font-weight: 500;
+
+	svg {
+		display: inline-block;
+		vertical-align: middle;
+		width: 1em;
+		height: 1em;
+		fill: currentColor;
+	}
+}
+
+@media screen and (min-width: 481px) {
+
+	.nav-links {
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		   -moz-box-orient: horizontal;
+		   -moz-box-direction: normal;
+		    -ms-flex-direction: row;
+		        flex-direction: row;
+		-webkit-box-align: normal;
+		   -moz-box-align: normal;
+		    -ms-flex-align: normal;
+				align-items: normal;
+		justify-content: space-between;
+	}
+}
+
+@media screen and (min-width: 769px) {
 
 	.main-navigation {
 		margin: 1em 0 0;
@@ -193,40 +274,6 @@
 
 		.menu-toggle-wrap {
 			display: none;
-		}
-	}
-}
-
-.comment-navigation,
-.posts-navigation,
-.post-navigation {
-	margin-top: 2em;
-	overflow: hidden;
-
-	svg {
-		display: inline-block;
-		vertical-align: middle;
-		width: 1em;
-		height: 1em;
-		fill: currentColor;
-	}
-
-	.nav-previous {
-		float: left;
-		width: 50%;
-
-		.theme-icon {
-			margin-right: 0.3em;
-		}
-	}
-
-	.nav-next {
-		float: right;
-		text-align: right;
-		width: 50%;
-
-		.theme-icon {
-			margin-left: 0.3em;
 		}
 	}
 }

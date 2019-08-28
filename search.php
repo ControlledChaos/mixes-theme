@@ -15,10 +15,11 @@ get_header(); ?>
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<h1 class="page-title">
-					<?php printf( esc_html__( 'Search Results for: %s', 'mixes-theme' ), '<span>' . get_search_query() . '</span>' );
-					?>
-				</h1>
+				<?php echo sprintf(
+					'<p class="page-title">%1s %2s</p>',
+					__( 'Search Results for:', 'mixes-theme' ),
+					get_search_query()
+				); ?>
 			</header>
 
 			<?php while ( have_posts() ) :

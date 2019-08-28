@@ -32,15 +32,23 @@
 		elseif ( is_search() ) : ?>
 
 			<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'mixes-theme' ); ?></p>
-			<?php
-			get_search_form();
 
-		else : ?>
+			<div class="entry-content search-page-content" itemprop="articleBody">
+				<?php if ( is_active_sidebar( 'search-page' ) ) {
+					dynamic_sidebar( 'search-page' );
+				} ?>
+			</div>
 
-			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'mixes-theme' ); ?></p>
-			<?php
-			get_search_form();
+		<?php else : ?>
 
-		endif; ?>
+			<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'mixes-theme' ); ?></p>
+
+			<div class="entry-content search-page-content" itemprop="articleBody">
+				<?php if ( is_active_sidebar( 'search-page' ) ) {
+					dynamic_sidebar( 'search-page' );
+				} ?>
+			</div>
+
+		<?php endif; ?>
 	</div>
 </section>
