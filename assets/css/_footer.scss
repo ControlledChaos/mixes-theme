@@ -11,8 +11,8 @@
 	}
 
 	.footer-menu {
-		padding: $px20 0;
-		background: $theme_light;
+		padding: $px19 0;
+		background: $white;
 
 		ul {
 			display: -webkit-box;
@@ -35,12 +35,12 @@
 				font-weight: 500;
 
 				a {
-					color: $white;
+					color: $theme_color;
 					transition: color .15s;
 
 					&:hover,
 					&:focus {
-						color: $theme_pale;
+						color: $theme_light;
 					}
 				}
 			}

@@ -27,7 +27,7 @@ get_header(); ?>
 					<ul class="posts-grid-list">
 					<?php while ( have_posts() ) : ?>
 						<?php the_post();
-						get_template_part( 'template-parts/content', 'recipe-archive' ); ?>
+						the_content(); ?>
 
 					<?php endwhile; ?>
 					</ul>

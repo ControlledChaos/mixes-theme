@@ -41,6 +41,6 @@ $copyright = sprintf(
 </footer>
 
 <?php wp_footer(); ?>
-
+<script>jQuery(document).ready(function($){$('.recipe-video').fitVids();});</script>
 </body>
 </html>

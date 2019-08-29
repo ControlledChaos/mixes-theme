@@ -120,6 +120,9 @@ final class Functions {
 		// Filter the excerpt trailing markup.
 		add_filter( 'excerpt_more', [ $this, 'more_excerpt' ] );
 
+		// Login title.
+		add_filter( 'login_headertitle', [ $this, 'login_url_title' ] );
+
 	}
 
 	/**
@@ -574,7 +577,11 @@ final class Functions {
 	 */
 	public function login_styles() {
 
-		wp_enqueue_style( 'custom-login', get_theme_file_uri( '/assets/css/login.css' ), [], '', 'screen' );
+		// Google fonts.
+		wp_enqueue_style( 'mixes-google-fonts', 'https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i&display=swap', [], '', 'screen' );
+
+		// Login styles.
+		wp_enqueue_style( 'mixes-login', get_theme_file_uri( '/assets/css/login.css' ), [], '', 'screen' );
 
 	}
 
@@ -788,6 +795,25 @@ final class Functions {
 
 		// Return the filtered markup.
 		return $more;
+	}
+
+	/**
+	 * Login title
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return string Returns the title attribute text.
+	 */
+	public function login_url_title() {
+
+		$site_title = sprintf(
+			'<img src="%1s" class="custom-login-logo" /><span class="title-span-one">%2s</span> <span class="title-span-two">%3s</span>',
+			get_site_icon_url(),
+			__( 'Monica', 'mixes-theme' ),
+			__( 'Mixes', 'mixes-theme' )
+		);
+
+		return $site_title;
 	}
 
 }

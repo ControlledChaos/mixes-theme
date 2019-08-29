@@ -299,7 +299,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   font-size: 1.125rem;
   line-height: 1.5;
-  color: #333333;
+  color: #444444;
 }
 
 .serif {
@@ -368,9 +368,11 @@ h2.page-title a {
   border-bottom: dotted 2px #93939a;
 }
 
-h3 {
+h3,
+.recipe-section h2 {
   font-size: 1.3125rem;
   font-weight: 500;
+  text-transform: none;
   color: #54545a;
 }
 
@@ -844,6 +846,7 @@ h2 + .search-form {
 }
 
 .site-title .title-span-two {
+  margin-left: -0.15em;
   font-size: 1.03em;
   font-weight: 600;
   color: #93939a;
@@ -1397,7 +1400,7 @@ figure.alignnone {
 .gallery {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr);
+  -ms-grid-columns: (1fr)[2];
       grid-template-columns: repeat(2, 1fr);
   grid-gap: 0.5em 0.5em;
   list-style: none;
@@ -1498,7 +1501,7 @@ figure.alignnone {
     margin: 2em auto;
   }
   .gallery {
-    -ms-grid-columns: (1fr);
+    -ms-grid-columns: (1fr)[3];
         grid-template-columns: repeat(3, 1fr);
   }
   .excerpt-thumbnail {
@@ -1661,6 +1664,16 @@ button.fancybox-arrow:active {
           flex-direction: column-reverse;
 }
 
+.recipe-ingredients ul li {
+  margin-top: 0.5em;
+  line-height: 1.2;
+}
+
+.recipe-ingredients ul li .ingredients-list-comment {
+  font-size: 0.9375rem;
+  font-style: italic;
+}
+
 .recipe-video {
   margin-top: 1.875rem;
   margin-bottom: 3.25rem;
@@ -1680,7 +1693,7 @@ button.fancybox-arrow:active {
 .posts-grid ul {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr);
+  -ms-grid-columns: (1fr)[1];
       grid-template-columns: repeat(1, 1fr);
   grid-gap: 1.875rem 0;
   padding-left: 0;
@@ -1694,7 +1707,7 @@ button.fancybox-arrow:active {
 .posts-grid ul li h3 {
   margin-top: 0.625em;
   line-height: 1.3;
-  color: #333333;
+  color: #444444;
 }
 
 .posts-grid ul li h3:hover, .posts-grid ul li h3:focus {
@@ -1750,7 +1763,7 @@ button.fancybox-arrow:active {
     margin-top: 2.5rem;
   }
   .posts-grid ul {
-    -ms-grid-columns: (1fr);
+    -ms-grid-columns: (1fr)[3];
         grid-template-columns: repeat(3, 1fr);
     grid-gap: 1em 0.5em;
   }
@@ -1778,8 +1791,8 @@ button.fancybox-arrow:active {
 }
 
 .site-footer .footer-menu {
-  padding: 1.25rem 0;
-  background: #93939a;
+  padding: 1.1875rem 0;
+  background: #ffffff;
 }
 
 .site-footer .footer-menu ul {
@@ -1803,13 +1816,13 @@ button.fancybox-arrow:active {
 }
 
 .site-footer .footer-menu ul li a {
-  color: #ffffff;
+  color: #6f6d72;
   -webkit-transition: color .15s;
   transition: color .15s;
 }
 
 .site-footer .footer-menu ul li a:hover, .site-footer .footer-menu ul li a:focus {
-  color: #c1bfc3;
+  color: #93939a;
 }
 
 .site-footer .footer-copyright {

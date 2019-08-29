@@ -1,0 +1,628 @@
+/**
+ * Browser reset
+ */
+html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, a, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, button, input, select, textarea, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+article, aside, details, div, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+audio, canvas, progress, video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 100vw;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+       text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: inherit;
+  line-height: 1;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+*:before, *:after {
+  font-size: inherit;
+}
+
+img, object, embed, video {
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+  border: 0;
+}
+
+hr {
+  display: block;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+a, a:hover, a:active, a:focus {
+  outline: none;
+  background-color: transparent;
+}
+
+small {
+  font-size: 85%;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+ol ol {
+  list-style-type: lower-alpha;
+}
+
+input {
+  line-height: normal;
+}
+
+input, textarea, select {
+  border: solid 1px #ccc;
+}
+
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type="radio"], input[type="checkbox"] {
+  vertical-align: baseline;
+}
+
+input::-webkit-inner-spin-button {
+  opacity: 1;
+}
+
+*::-webkit-input-placeholder {
+  color: #888;
+  opacity: 1;
+}
+
+*:-ms-input-placeholder {
+  color: #888;
+  opacity: 1;
+}
+
+*::-ms-input-placeholder {
+  color: #888;
+  opacity: 1;
+}
+
+*::placeholder {
+  color: #888;
+  opacity: 1;
+}
+
+textarea {
+  overflow: auto;
+}
+
+button, input, optgroup, select, textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+button {
+  overflow: visible;
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"], input[type="image"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+button[disabled], html input[disabled] {
+  cursor: default;
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+table {
+  font-size: inherit;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td, th {
+  padding: 0;
+}
+
+th {
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+td, td img {
+  font-weight: normal;
+  vertical-align: top;
+}
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+dfn {
+  font-style: italic;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+blockquote {
+  quotes: none;
+}
+
+q, cite {
+  font-style: italic;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+[hidden], template {
+  display: none;
+}
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+pre {
+  overflow: auto;
+  white-space: pre;
+  white-space: pre-wrap;
+  white-space: pre-line;
+  word-wrap: break-word;
+}
+
+pre, code, kbd, samp {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+b, strong, optgroup {
+  font-weight: bold;
+}
+
+/* .clearfix class for clearing floats */
+.clearfix {
+  clear: both;
+  display: block;
+  height: 0;
+  overflow: hidden;
+  zoom: 1;
+}
+
+/**
+ * SASS/SCSS variables
+ *
+ * The following variables are used in other .scss files.
+ * Make sure that this files is called early in style,scss.
+ *
+ * @link https://sass-lang.com/documentation/variables
+ */
+/**
+ * Colors
+ *
+ * Some variables use colors set by args in the functions file.
+ *
+ * @see functions.php/setup
+ *
+ * Theme color options: #54545a, #6f6d72, #93939a, #c1bfc3
+ */
+/**
+ * Font sizes
+ *
+ * The font size variables presume a browser default of 16px,
+ * in which case the variable number is equivelent to a px number.
+ *
+ * SASS compiler may not like variables beginning with a numeral.
+ */
+/**
+ * Typography
+ */
+body {
+  background: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: #444444;
+}
+
+.serif {
+  font-family: 'Hoefler Text', 'Baskerville Old Face', Garamond, Times, 'Times New Roman', serif;
+}
+
+.entry-content,
+.sidebar,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
+  margin-top: 1em;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+h1 a,
+h2 a,
+h3 a {
+  text-decoration: none;
+  color: #6f6d72;
+}
+
+h1 a:visited,
+h2 a:visited,
+h3 a:visited {
+  color: #6f6d72;
+}
+
+h1 a:hover, h1 a:focus,
+h2 a:hover,
+h2 a:focus,
+h3 a:hover,
+h3 a:focus {
+  color: #5876a8;
+}
+
+h1,
+h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #6f6d72;
+}
+
+h1.page-title,
+h2.page-title {
+  font-size: 1.625rem;
+  text-transform: none;
+}
+
+h1.page-title a,
+h2.page-title a {
+  display: inline-block;
+  line-height: 1;
+  border-bottom: dotted 2px #93939a;
+}
+
+h3,
+.recipe-section h2 {
+  font-size: 1.3125rem;
+  font-weight: 500;
+  text-transform: none;
+  color: #54545a;
+}
+
+h4 {
+  font-size: 1.3125rem;
+  font-weight: 600;
+  color: #54545a;
+}
+
+.page-title {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 1.3125rem;
+  font-weight: 500;
+  color: #54545a;
+}
+
+a,
+.taxonomy-heading-links a {
+  color: #5876a8;
+  text-decoration: none;
+}
+
+a:visited,
+.taxonomy-heading-links a:visited {
+  color: #5876a8;
+}
+
+a:hover, a:focus,
+.taxonomy-heading-links a:hover,
+.taxonomy-heading-links a:focus {
+  color: #7093c2;
+}
+
+.entry-content ul:not(.gallery):not(.posts-grid-list),
+.sidebar-widgets ul,
+.entry-content ol,
+.sidebar-widgets ol {
+  padding-left: 1em;
+}
+
+b,
+strong {
+  color: #54545a;
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+  /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+.screen-reader-text:focus {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  -webkit-clip-path: none;
+  clip-path: none;
+  color: #21759b;
+  display: block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+  /* Above WP toolbar. */
+}
+
+.login {
+  background: #ffffff;
+  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: #444444;
+}
+
+#login {
+  width: 100%;
+}
+
+.login h1 {
+  font-size: 2.25rem;
+  text-align: center;
+  line-height: 1;
+  color: #6f6d72;
+}
+
+.login h1 a {
+  display: inline-block;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.login h1 a .custom-login-logo {
+  display: block;
+  max-width: 80px;
+  margin: 0 auto 1rem;
+}
+
+.login h1 a .title-span-one {
+  font-weight: 400;
+  color: #6f6d72;
+  letter-spacing: -0.003em;
+}
+
+.login h1 a .title-span-two {
+  margin-left: -0.15em;
+  font-size: 1.03em;
+  font-weight: 600;
+  color: #93939a;
+}
+
+a {
+  color: #5876a8;
+}
+
+a:visited {
+  color: #5876a8;
+}
+
+a:hover, a:focus {
+  color: #7093c2;
+}
+
+strong {
+  color: #444444;
+}
+
+/* Remove WordPress branding */
+.login h1 a {
+  width: auto;
+  height: auto;
+  margin: 0 auto 25px;
+  padding: 0;
+  font-size: 1em;
+  text-indent: 0px;
+  color: #444444;
+  background: none;
+}
+
+.login h1 a:hover,
+.login h1 a:focus {
+  color: #444444;
+}
+
+.login-text {
+  text-align: center;
+}
+
+.login form {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+#loginform {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.login label {
+  color: #444444;
+}
+
+#wp-submit {
+  display: inline-block;
+  height: auto;
+  padding: 0.775em 1em 0.68em;
+  background: #6f6d72;
+  border: solid 1px #6f6d72;
+  border-radius: 0px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #ffffff;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 1.125rem;
+  font-weight: bold;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-shadow: none;
+}
+
+#wp-submit:hover, #wp-submit:focus, #wp-submit:active {
+  background: #93939a;
+  border-color: #93939a;
+}
+
+.login #nav,
+.login #backtoblog,
+.login #login_error,
+.login .message,
+.login .success {
+  width: 100%;
+  max-width: 480px;
+  margin: 0.5em auto;
+}
+
+.login #nav a,
+.login #backtoblog a,
+.login #login_error a,
+.login .message a,
+.login .success a {
+  color: #5876a8;
+}
+
+.login #nav a:visited,
+.login #backtoblog a:visited,
+.login #login_error a:visited,
+.login .message a:visited,
+.login .success a:visited {
+  color: #5876a8;
+}
+
+.login #nav a:hover, .login #nav a:focus,
+.login #backtoblog a:hover,
+.login #backtoblog a:focus,
+.login #login_error a:hover,
+.login #login_error a:focus,
+.login .message a:hover,
+.login .message a:focus,
+.login .success a:hover,
+.login .success a:focus {
+  color: #7093c2;
+}
+
+.login #login_error,
+.login .message,
+.login .success {
+  font-size: 1rem;
+  background: #ffffff;
+  border: solid 1px #6f6d72;
+  color: #444444;
+}

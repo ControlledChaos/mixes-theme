@@ -60,12 +60,12 @@ if ( get_bloginfo( 'description' ) || is_customize_preview() ) {
 <?php do_action( 'before_html' ); ?>
 <html <?php language_attributes(); ?> class="no-js">
 <head id="<?php echo get_bloginfo( 'wpurl' ); ?>" data-template-set="<?php echo get_template(); ?>">
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<!--[if IE ]>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<![endif]-->
-	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+	<link rel="profile" href="https://gmpg.org/xfn/11" />
 	<?php if ( is_singular() && pings_open() ) {
 		echo sprintf( '<link rel="pingback" href="%s" />', get_bloginfo( 'pingback_url' ) );
 	} ?>
@@ -73,21 +73,8 @@ if ( get_bloginfo( 'description' ) || is_customize_preview() ) {
 	<?php if ( is_search() ) { echo '<meta name="robots" content="noindex,nofollow" />'; } ?>
 
 	<!-- Prefetch font URLs -->
-	<link rel='dns-prefetch' href='//fonts.adobe.com'/>
-	<link rel='dns-prefetch' href='//fonts.google.com'/>
-	<script>(function (d) {
-    var w = d.documentElement.offsetWidth,
-        t = d.createTreeWalker(d.body, NodeFilter.SHOW_ELEMENT),
-        b;
-    while (t.nextNode()) {
-        b = t.currentNode.getBoundingClientRect();
-        if (b.right > w || b.left < 0) {
-            t.currentNode.style.setProperty('outline', '1px dotted red', 'important');
-            console.log(t.currentNode);
-        }
-    };
-}(document));</script>
-
+	<link rel="dns-prefetch" href="//fonts.adobe.com" />
+	<link rel="dns-prefetch" href="//fonts.google.com" />
 	<?php wp_head(); ?>
 </head>
 

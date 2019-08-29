@@ -77,6 +77,22 @@
 	flex-direction: column-reverse;
 }
 
+.recipe-ingredients {
+
+	ul {
+
+		li {
+			margin-top: 0.5em;
+			line-height: 1.2;
+
+			.ingredients-list-comment {
+				font-size: $px15;
+				font-style: italic;
+			}
+		}
+	}
+}
+
 .recipe-video {
 	margin-top: $px30;
 	margin-bottom: $px52;
