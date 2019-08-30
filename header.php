@@ -75,6 +75,7 @@ if ( get_bloginfo( 'description' ) || is_customize_preview() ) {
 	<!-- Prefetch font URLs -->
 	<link rel="dns-prefetch" href="//fonts.adobe.com" />
 	<link rel="dns-prefetch" href="//fonts.google.com" />
+
 	<?php wp_head(); ?>
 </head>
 
