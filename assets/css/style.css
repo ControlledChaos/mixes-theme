@@ -696,9 +696,9 @@ input[type="image"] {
   font-weight: 700;
   line-height: 1;
   text-transform: uppercase;
-  background: #6f6d72;
+  background: #93939a;
   color: #ffffff;
-  border: solid 1px #6f6d72;
+  border: solid 1px #93939a;
 }
 
 button:not(.menu-toggle):not(.fancybox-button):hover, button:not(.menu-toggle):not(.fancybox-button):focus,
@@ -712,8 +712,8 @@ input[type="reset"]:hover,
 input[type="reset"]:focus,
 input[type="image"]:hover,
 input[type="image"]:focus {
-  background: #93939a;
-  border-color: #93939a;
+  background: #c1bfc3;
+  border-color: #c1bfc3;
 }
 
 button:not(.menu-toggle):not(.fancybox-button) svg,
@@ -1827,7 +1827,7 @@ button.fancybox-arrow:active {
 
 .site-footer .footer-copyright {
   padding: 0.8125rem;
-  background: #6f6d72;
+  background: #54545a;
   color: #ffffff;
 }
 

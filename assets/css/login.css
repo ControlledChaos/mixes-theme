@@ -559,8 +559,8 @@ strong {
   display: inline-block;
   height: auto;
   padding: 0.775em 1em 0.68em;
-  background: #6f6d72;
-  border: solid 1px #6f6d72;
+  background: #93939a;
+  border: solid 1px #93939a;
   border-radius: 0px;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -576,8 +576,8 @@ strong {
 }
 
 #wp-submit:hover, #wp-submit:focus, #wp-submit:active {
-  background: #93939a;
-  border-color: #93939a;
+  background: #c1bfc3;
+  border-color: #c1bfc3;
 }
 
 .login #nav,

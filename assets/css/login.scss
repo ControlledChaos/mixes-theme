@@ -104,8 +104,8 @@ strong {
 	display: inline-block;
 	height: auto;
 	padding: 0.775em 1em 0.68em;
-	background: $theme_color;
-	border: solid 1px $theme_color;
+	background: $theme_light;
+	border: solid 1px $theme_light;
 	border-radius: 0px;
 	-webkit-box-shadow: none;
 	        box-shadow: none;
@@ -122,8 +122,8 @@ strong {
 	&:hover,
 	&:focus,
 	&:active {
-		background: $theme_light;
-		border-color: $theme_light;
+		background: $theme_pale;
+		border-color: $theme_pale;
 	}
 }
 

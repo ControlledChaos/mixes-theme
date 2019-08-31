@@ -1504,3 +1504,154 @@ div#wp-responsive-toggle a:before {
   text-shadow: none !important;
   font-weight: bold;
 }
+
+/**
+ * jQuery tabs.
+ */
+.backend-tabbed-content.ui-widget-content, .backend-tabbed-content.ui-widget.ui-widget-content {
+  border: none;
+  background: inherit;
+  color: inherit;
+}
+
+.backend-tabbed-content.ui-widget-content {
+  font-family: inherit;
+}
+
+.nav-tab-wrapper a .dashicons {
+  vertical-align: text-top;
+}
+
+.backend-tabbed-content > div {
+  max-width: 1280px;
+}
+
+.backend-tabbed-content .ui-widget-header {
+  border: none;
+  border-bottom: 1px solid #c1bfc3;
+  background: inherit;
+  color: inherit;
+  font-weight: 700;
+}
+
+.backend-tabbed-content.ui-tabs {
+  /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+  position: relative;
+  padding: 0;
+}
+
+.backend-tabbed-content.ui-tabs .ui-tabs-nav {
+  margin: 0;
+  padding: 0;
+  padding: 9px 0 0 .4em;
+  border-bottom: 1px solid #c1bfc3;
+}
+
+.backend-tabbed-content.ui-tabs .ui-tabs-nav h2 {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+.backend-tabbed-content.ui-tabs .ui-tabs-nav li {
+  display: inline-block;
+  list-style: none;
+  position: relative;
+  top: 1px;
+  margin: 0;
+  border-bottom-width: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.backend-tabbed-content .ui-button,
+.backend-tabbed-content .ui-state-default,
+.backend-tabbed-content .ui-widget-content .ui-state-default,
+.backend-tabbed-content .ui-widget-header .ui-state-default,
+html .backend-tabbed-content .ui-button.ui-state-disabled:active,
+html .backend-tabbed-content .ui-button.ui-state-disabled:hover {
+  border: none;
+}
+
+.backend-tabbed-content .ui-button.ui-state-active:hover,
+.backend-tabbed-content .ui-button:active,
+.backend-tabbed-content .ui-state-active,
+.backend-tabbed-content .ui-widget-content .ui-state-active,
+.backend-tabbed-content .ui-widget-header .ui-state-active,
+.backend-tabbed-content a.ui-button:active {
+  border: none;
+  border-bottom-width: 1px;
+  background: inherit;
+  font-weight: 400;
+  color: inherit;
+}
+
+.backend-tabbed-content.ui-tabs .ui-tabs-nav li a {
+  display: block;
+  border-radius: 3px 3px 0 0;
+  border: 1px solid #c1bfc3;
+  border-bottom: none;
+  margin: 1px .25em 0 0;
+  padding: 0.5em 1em;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1;
+  background: #e7e7e7;
+  color: #6f6d72;
+  text-decoration: none;
+}
+
+.backend-tabbed-content.ui-tabs .ui-tabs-nav li a:hover {
+  background: #ffffff;
+  color: #6f6d72;
+}
+
+.backend-tabbed-content.ui-tabs .ui-tabs-nav li a .dashicons {
+  vertical-align: text-bottom;
+}
+
+.backend-tabbed-content.ui-tabs .ui-tabs-nav li.ui-tabs-active a,
+.backend-tabbed-content.ui-tabs .ui-tabs-nav li.ui-tabs-active a:focus,
+.backend-tabbed-content.ui-tabs .ui-tabs-nav li.ui-tabs-active a:focus:active,
+.backend-tabbed-content.ui-tabs .ui-tabs-nav li.ui-tabs-active a:active,
+.backend-tabbed-content.ui-tabs .ui-tabs-nav li.ui-tabs-active a:hover {
+  border-bottom: 1px solid #ffffff;
+  background: #ffffff;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #6f6d72;
+}
+
+.backend-tabbed-content.ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor,
+.backend-tabbed-content.ui-tabs .ui-tabs-nav li.ui-state-disabled .ui-tabs-anchor,
+.backend-tabbed-content.ui-tabs .ui-tabs-nav li.ui-tabs-loading .ui-tabs-anchor {
+  cursor: pointer;
+}
+
+.backend-tabbed-content.ui-tabs .ui-tabs-nav ~ div {
+  clear: both;
+}
+
+.backend-tabbed-content.ui-tabs .ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
+  cursor: pointer;
+}
+
+.backend-tabbed-content.ui-tabs .ui-tabs-panel {
+  display: block;
+  border-width: 0;
+  padding: 1em 1.4em;
+  background: none;
+}
+
+.instructions-tab-header h2 {
+  margin: 1em 0 0 0;
+  line-height: 1.2;
+}
+
+.instructions-tab-content p {
+  margin: 1em 0 0 0;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: #444444;
+}
