@@ -90,5 +90,5 @@ if ( $query->have_posts() ) : ?>
 	</ul>
 </section>
 <?php
-// End check for podtd.
+// End check for posts.
 endif; ?>
