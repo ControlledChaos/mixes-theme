@@ -233,6 +233,18 @@ function entry_footer() {
 			);
 		}
 
+	} elseif ( 'recipe' === get_post_type() ) {
+
+		$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'mixes-theme' ) );
+
+		if ( $tags_list ) {
+			printf(
+				'<h3>%1s</h3><p><span class="tags-links">%1s</span></p>',
+				esc_html__( 'Recipe Tags', 'mixes-theme' ),
+				$tags_list
+			);
+		}
+
 	}
 
 	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
