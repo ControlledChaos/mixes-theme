@@ -116,7 +116,9 @@ function theme_acf_options() {
 function site_schema() {
 
 	// Change page slugs and template names as needed.
-	if ( is_page( 'about' ) || is_page( 'about-us' ) || is_page_template( 'page-about.php' ) || is_page_template( 'about.php' ) ) {
+	if ( is_singular( 'recipe' ) ) {
+		$itemtype = esc_attr( 'Recipe' );
+	} elseif ( is_page( 'about' ) || is_page( 'about-us' ) || is_page_template( 'page-about.php' ) || is_page_template( 'about.php' ) ) {
 		$itemtype = esc_attr( 'AboutPage' );
 	} elseif ( is_page( 'contact' ) || is_page( 'contact-us' ) || is_page_template( 'page-contact.php' ) || is_page_template( 'contact.php' ) ) {
 		$itemtype = esc_attr( 'ContactPage' );
