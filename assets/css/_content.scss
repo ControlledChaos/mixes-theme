@@ -77,6 +77,10 @@
 	flex-direction: column-reverse;
 }
 
+.recipe-section {
+	clear: both;
+}
+
 .recipe-ingredients {
 
 	ul {
@@ -104,6 +108,12 @@
 
 .recipe-gallery {
 	margin-top: $px30;
+}
+
+.related-recipes {
+	clear: both;
+	margin-top: $px30;
+	border-top: solid 1px $theme_pale;
 }
 
 /**

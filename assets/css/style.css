@@ -1545,7 +1545,7 @@ button.fancybox-arrow:active {
  * Comments
  */
 .comments-area {
-  margin-top: 1.25rem;
+  margin-top: 1.875rem;
   border-top: solid 1px #c1bfc3;
 }
 
@@ -1664,6 +1664,10 @@ button.fancybox-arrow:active {
           flex-direction: column-reverse;
 }
 
+.recipe-section {
+  clear: both;
+}
+
 .recipe-ingredients ul li {
   margin-top: 0.5em;
   line-height: 1.2;
@@ -1685,6 +1689,12 @@ button.fancybox-arrow:active {
 
 .recipe-gallery {
   margin-top: 1.875rem;
+}
+
+.related-recipes {
+  clear: both;
+  margin-top: 1.875rem;
+  border-top: solid 1px #c1bfc3;
 }
 
 /**
