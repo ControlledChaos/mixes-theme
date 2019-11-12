@@ -8,12 +8,19 @@
  */
 
 $args = [
-	'post_type'              => [ 'recipe' ],
-	'nopaging'               => true,
-	'posts_per_page'         => '9',
-	'ignore_sticky_posts'    => false,
-	'order'                  => 'DESC',
-	'orderby'                => 'date',
+	'post_type'           => [ 'recipe' ],
+	'posts_per_page'      => '9',
+	'ignore_sticky_posts' => false,
+	'order'               => 'DESC',
+	'orderby'             => 'date',
+	'tax_query'           => [
+        [
+            'taxonomy' => 'recipe_type',
+			'field'    => 'slug',
+			'operator' => 'NOT IN',
+            'terms'    => [ 'ingredient' ],
+		],
+    ],
 ];
 
 $query = new WP_Query( $args );
