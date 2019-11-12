@@ -10,7 +10,6 @@
 // Post query arguments.
 $args = [
 	'post_type'              => [ 'post' ],
-	'nopaging'               => true,
 	'posts_per_page'         => '9',
 	'ignore_sticky_posts'    => false,
 	'order'                  => 'DESC',
