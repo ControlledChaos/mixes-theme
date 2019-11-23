@@ -62,7 +62,8 @@ button[type="submit"],
 input[type="submit"],
 input[type="button"],
 input[type="reset"],
-input[type="image"] {
+input[type="image"],
+a.button {
 	width: auto;
 	padding: 0.775em 1em 0.68em;
 	cursor: pointer;

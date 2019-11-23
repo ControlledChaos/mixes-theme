@@ -188,6 +188,10 @@
 .read-more {
 	font-weight: 500;
 
+	&.search-read-more {
+		font-weight: 600;
+	}
+
 	svg {
 		display: inline-block;
 		vertical-align: middle;

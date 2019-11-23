@@ -74,9 +74,6 @@ final class Functions {
 		// Register widgets.
         add_action( 'widgets_init', [ $this, 'widgets' ] );
 
-		// Disable custom colors in the editor.
-		add_action( 'after_setup_theme', [ $this, 'editor_custom_color' ] );
-
 		// Remove unpopular meta tags.
 		add_action( 'init', [ $this, 'head_cleanup' ] );
 
@@ -110,6 +107,9 @@ final class Functions {
 
 		// Remove prepend text from archive titles.
 		add_filter( 'get_the_archive_title', [ $this, 'archive_title' ] );
+
+		// Add post types to default taxonomy archives.
+		add_filter( 'pre_get_posts', [ $this, 'custom_types_to_tax' ] );
 
 		// Remove the user admin color scheme picker.
 		remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
@@ -228,59 +228,6 @@ final class Functions {
 			'gscreenery',
 			'caption'
 		 ] );
-
-		/**
-		 * Color arguments
-		 *
-		 * Match the following HEX codes with SASS color variables.
-		 *
-		 * @see assets/css/_variables.scss
-		 */
-		$color_args = [
-			[
-				'name'  => __( 'Text', 'mixes-theme' ),
-				'slug'  => 'mixes-text',
-				'color' => '#333333',
-			],
-			[
-				'name'  => __( 'Light Gray', 'mixes-theme' ),
-				'slug'  => 'mixes-light-gray',
-				'color' => '#888888',
-			],
-			[
-				'name'  => __( 'Pale Gray', 'mixes-theme' ),
-				'slug'  => 'mixes-pale-gray',
-				'color' => '#cccccc',
-			],
-			[
-				'name'  => __( 'White', 'mixes-theme' ),
-				'slug'  => 'mixes-white',
-				'color' => '#ffffff',
-			],
-			[
-				'name'  => __( 'Error Red', 'mixes-theme' ),
-				'slug'  => 'mixes-error',
-				'color' => '#dc3232',
-			],
-			[
-				'name'  => __( 'Warning Yellow', 'mixes-theme' ),
-				'slug'  => 'mixes-warning',
-				'color' => '#ffb900',
-			],
-			[
-				'name'  => __( 'Success Green', 'mixes-theme' ),
-				'slug'  => 'mixes-success',
-				'color' => '#46b450',
-			]
-		];
-
-		// Apply a filter to editor arguments.
-		$colors = apply_filters( 'mixes_editor_colors', $color_args );
-
-		// Add color support.
-		add_theme_support( 'editor-color-palette', $colors );
-
-		add_theme_support( 'align-wide' );
 
 		// Customizer widget refresh support.
 		add_theme_support( 'customize-selective-refresh-widgets' );
@@ -458,24 +405,6 @@ final class Functions {
 			'before_title'  => '<h4 class="widget-title footer-widget-title">',
 			'after_title'   => '</h4>',
 		] );
-
-	}
-
-	/**
-	 * Theme support for disabling custom colors in the editor
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return bool Returns true for the color picker.
-	 */
-	public function editor_custom_color() {
-
-		$disable = add_theme_support( 'disable-custom-colors', [] );
-
-		// Apply a filter for conditionally disabling the picker.
-		$custom_colors = apply_filters( 'mixes_editor_custom_colors', '__return_false' );
-
-		return $custom_colors;
 
 	}
 
@@ -745,6 +674,26 @@ final class Functions {
 		// Return the ammended title.
     	return $title;
 
+	}
+
+	/**
+	 * Add post types to default taxonomy archives
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return integer Returns the filtered number of words.
+	 */
+	function custom_types_to_tax( $query ) {
+
+		if ( ( is_category() || is_tag() ) && empty( $query->query_vars['suppress_filters'] ) ) {
+
+			// Get all your post types.
+			$post_types = get_post_types();
+
+			$query->set( 'post_type', $post_types );
+
+			return $query;
+		}
 	}
 
 	/**

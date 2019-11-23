@@ -21,7 +21,8 @@
 }
 
 .blog .site-main article:not(:first-of-type),
-.archive:not(.post-type-archive) .site-main article:not(:first-of-type) {
+.archive:not(.post-type-archive) .site-main article:not(:first-of-type),
+.search article:not(:first-of-type) {
 	margin-top: $px48;
 	border-top: solid 1px $theme_pale;
 }
@@ -39,7 +40,12 @@
 .entry-footer {
 	margin-top: $px16;
 	text-align: center;
-	line-height: 1;
+	line-height: 1.35;
+}
+
+.single .entry-footer {
+	clear: both;
+	padding-top: 0.5em;
 }
 
 .entry-content ~ .entry-footer {
@@ -51,10 +57,14 @@
 	font-weight: 500;
 }
 
-.entry-footer span:not(.post-meta-icon) {
-	margin-right: 1em;
+.entry-footer span {
+	margin-right: 0.5em;
 	font-weight: 600;
 	line-height: 1;
+
+	&:not(.post-meta-icon) {
+		margin-right: 1em;
+	}
 }
 
 .post-meta-icon {

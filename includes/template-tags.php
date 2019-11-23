@@ -237,7 +237,14 @@ function entry_footer() {
 
 		$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'mixes-theme' ) );
 
-		if ( $tags_list ) {
+		if ( $tags_list && is_search() ) {
+			printf(
+				'<span class="tags-links"><span class="post-meta-icon">%1s</span><span class="screen-reader-text">%2s</span> %3s</span>',
+				$tags_icon,
+				esc_html__( 'Tagged:', 'mixes-theme' ),
+				$tags_list
+			);
+		} elseif ( $tags_list ) {
 			echo sprintf(
 				'<h3>%1s</h3>',
 				esc_html__( 'Recipe Tags', 'mixes-theme' )
@@ -247,14 +254,15 @@ function entry_footer() {
 				esc_html__( 'Search for recipes that have one of the following tags in common with this recipe:', 'mixes-theme' )
 			);
 			echo sprintf(
-				'<p><span class="tags-links">%1s</span></p>',
+				'<p><span class="post-meta-icon">%1s</span><span class="tags-links">%2s</span></p>',
+				$tags_icon,
 				$tags_list
 			);
 		}
 
 	}
 
-	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+	if ( ! is_single() && ! post_password_required() && ! is_search() && ( comments_open() || get_comments_number() ) ) {
 
 		echo '<span class="comments-link">';
 		comments_popup_link(

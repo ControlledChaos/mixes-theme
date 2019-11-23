@@ -33,6 +33,8 @@ if ( is_post_type_archive( 'recipe' ) ) {
 	$title = __( 'Monica Mixes Recipes', 'mixes-theme' );
 } elseif ( is_home() || is_post_type_archive( 'post' ) ) {
 	$title = get_the_title( get_option( 'page_for_posts', true ) );
+} elseif ( is_search() ) {
+	$title = __( 'Search Results', 'mixes-theme' );
 } elseif ( is_archive() ) {
 	$title = get_the_archive_title();
 } elseif ( is_singular() ) {

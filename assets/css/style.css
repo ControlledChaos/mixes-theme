@@ -687,7 +687,8 @@ button[type="submit"],
 input[type="submit"],
 input[type="button"],
 input[type="reset"],
-input[type="image"] {
+input[type="image"],
+a.button {
   width: auto;
   padding: 0.775em 1em 0.68em;
   cursor: pointer;
@@ -711,7 +712,9 @@ input[type="button"]:focus,
 input[type="reset"]:hover,
 input[type="reset"]:focus,
 input[type="image"]:hover,
-input[type="image"]:focus {
+input[type="image"]:focus,
+a.button:hover,
+a.button:focus {
   background: #c1bfc3;
   border-color: #c1bfc3;
 }
@@ -721,7 +724,8 @@ button[type="submit"] svg,
 input[type="submit"] svg,
 input[type="button"] svg,
 input[type="reset"] svg,
-input[type="image"] svg {
+input[type="image"] svg,
+a.button svg {
   width: 1.5rem;
   height: 1.5rem;
   fill: currentColor;
@@ -1147,6 +1151,10 @@ body .site-header-image figure figcaption p {
 
 .read-more {
   font-weight: 500;
+}
+
+.read-more.search-read-more {
+  font-weight: 600;
 }
 
 .read-more svg {
@@ -1603,7 +1611,8 @@ button.fancybox-arrow:active {
 }
 
 .blog .site-main article:not(:first-of-type),
-.archive:not(.post-type-archive) .site-main article:not(:first-of-type) {
+.archive:not(.post-type-archive) .site-main article:not(:first-of-type),
+.search article:not(:first-of-type) {
   margin-top: 3rem;
   border-top: solid 1px #c1bfc3;
 }
@@ -1621,7 +1630,12 @@ button.fancybox-arrow:active {
 .entry-footer {
   margin-top: 1rem;
   text-align: center;
-  line-height: 1;
+  line-height: 1.35;
+}
+
+.single .entry-footer {
+  clear: both;
+  padding-top: 0.5em;
 }
 
 .entry-content ~ .entry-footer {
@@ -1633,10 +1647,14 @@ button.fancybox-arrow:active {
   font-weight: 500;
 }
 
-.entry-footer span:not(.post-meta-icon) {
-  margin-right: 1em;
+.entry-footer span {
+  margin-right: 0.5em;
   font-weight: 600;
   line-height: 1;
+}
+
+.entry-footer span:not(.post-meta-icon) {
+  margin-right: 1em;
 }
 
 .post-meta-icon {

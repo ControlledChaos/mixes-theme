@@ -22,10 +22,15 @@ get_header(); ?>
 				); ?>
 			</header>
 
-			<?php while ( have_posts() ) :
-				the_post();
+			<?php while ( have_posts() ) : the_post();
 
-				get_template_part( 'template-parts/content', 'search' );
+				if ( class_exists( 'acf_pro' ) && 'recipe' == get_post_type() ) {
+					get_template_part( 'template-parts/content-search-recipe', 'acf' );
+				} elseif ( is_singular( 'recipe' ) ) {
+						get_template_part( 'template-parts/content-search-recipe', 'no-acf' );
+				} else {
+					get_template_part( 'template-parts/content', 'search' );
+				}
 
 			endwhile;
 
