@@ -108,9 +108,6 @@ final class Functions {
 		// Remove prepend text from archive titles.
 		add_filter( 'get_the_archive_title', [ $this, 'archive_title' ] );
 
-		// Add post types to default taxonomy archives.
-		add_filter( 'pre_get_posts', [ $this, 'custom_types_to_tax' ] );
-
 		// Remove the user admin color scheme picker.
 		remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
 
@@ -674,26 +671,6 @@ final class Functions {
 		// Return the ammended title.
     	return $title;
 
-	}
-
-	/**
-	 * Add post types to default taxonomy archives
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return integer Returns the filtered number of words.
-	 */
-	function custom_types_to_tax( $query ) {
-
-		if ( ( is_category() || is_tag() ) && empty( $query->query_vars['suppress_filters'] ) ) {
-
-			// Get all your post types.
-			$post_types = get_post_types();
-
-			$query->set( 'post_type', $post_types );
-
-			return $query;
-		}
 	}
 
 	/**
