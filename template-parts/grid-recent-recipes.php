@@ -9,6 +9,7 @@
 
 $args = [
 	'post_type'           => [ 'recipe' ],
+	'post_status'         => [ 'publish' ],
 	'posts_per_page'      => '9',
 	'ignore_sticky_posts' => false,
 	'order'               => 'DESC',
