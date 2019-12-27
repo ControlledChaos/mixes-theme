@@ -239,7 +239,7 @@ function entry_footer() {
 
 		if ( $tags_list && is_search() ) {
 			printf(
-				'<span class="tags-links"><span class="post-meta-icon">%1s</span><span class="screen-reader-text">%2s</span> %3s</span>',
+				'<span class="tags-links"><span class="post-meta-icon">%1s</span>%2s %3s</span>',
 				$tags_icon,
 				esc_html__( 'Tagged:', 'mixes-theme' ),
 				$tags_list
