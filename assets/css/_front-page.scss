@@ -5,9 +5,20 @@
 
 	.posts-grid {
 
-		&.recent-posts {
+		& + .posts-grid {
 			margin-top: $px40;
 			border-top: solid 1px $pale_gray;
 		}
+
+		.featured-recipes-label {
+			line-height: 1;
+			font-size: 0.575em;
+			font-weight: 700;
+		}
+	}
+
+	.grid-more {
+		margin-top: 3rem;
+		text-align: center;
 	}
 }

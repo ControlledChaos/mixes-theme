@@ -349,6 +349,7 @@ h3 a:focus {
 
 h1,
 h2 {
+  line-height: 1.2;
   font-size: 2rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -1800,9 +1801,20 @@ button.fancybox-arrow:active {
 /**
  * Front page
  */
-.home .posts-grid.recent-posts {
+.home .posts-grid + .posts-grid {
   margin-top: 2.5rem;
   border-top: solid 1px #cccccc;
+}
+
+.home .posts-grid .featured-recipes-label {
+  line-height: 1;
+  font-size: 0.575em;
+  font-weight: 700;
+}
+
+.home .grid-more {
+  margin-top: 3rem;
+  text-align: center;
 }
 
 /**
